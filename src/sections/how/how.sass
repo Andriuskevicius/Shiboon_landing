@@ -1,0 +1,175 @@
+@import ../../styles/helpers
+
+.howSection
+    position: relative
+    padding: 0 10px
+    background: #000
+    +t
+        padding: 0 10px
+        height: unset
+
+.howRow
+    max-width: 1440px
+    margin: 40px auto
+    padding: 60px 35px
+    height: 100%
+    position: relative
+    display: flex
+    flex-direction: row
+    justify-content: space-between
+    align-items: center
+    +t
+        flex-direction: column
+        align-items: flex-start
+        padding: 0 10px
+
+.howTextBlocksContainer
+    z-index: 2
+    position: relative
+    width: 100%
+    display: flex
+    flex-direction: column
+    justify-content: flex-start
+    align-items: center
+    height: 100%
+    +t
+        margin-right: 0
+        min-width: unset
+        width: 100%
+        padding: 40px 10px
+        padding-top: 50px
+        z-index: 2
+        position: relative
+        margin-top: 0
+    h1
+        font-size: 200px
+        line-height: 200px
+        text-align: left
+        color: $m-white
+        width: 100%
+        margin-top: 50px
+        display: block
+        +t
+            font-size: 36px
+            line-height: 40px
+            padding: 20px 0
+            margin-top: 0
+            max-width: 100%
+
+    p
+        font-size: 20px
+        color: $mint
+        margin-top: 25px
+        margin-bottom: 45px
+        width: 80%
+        +t
+            word-wrap: break-word
+            font-size: 14px
+            width: 100%
+    a
+        color: $pink
+
+.timerContainer
+    display: flex
+    justify-content: center
+    align-items: center
+    font-size: 80px
+    color: $yellow
+    +t
+        font-size: 60px
+
+.howBoo
+    position: relative !important
+
+.howBoo.mobile
+    display: block
+
+.howBoo.mobile.one
+    width: 70px !important
+    height: 70px !important
+
+.howBoo.mobile.two
+    width: 70px !important
+    height: 70px !important
+    top: unset !important
+    right: unset !important
+    left: 15px !important
+    bottom: 230px !important
+
+.howBoo.mobile.three
+    width: 50px !important
+    height: 50px !important
+    right: 50px !important
+    top: calc(50% - 70px) !important
+
+.howBoo.mobile.four
+    width: 90px !important
+    height: 90px !important
+    top: 130px !important
+    right: 20px !important
+
+.howLine
+    width: calc( 100% - 480px ) !important
+    height: 10px
+    margin: 0 180px
+    background: $pink
+    position: absolute
+    top: 30px
+    z-index: 1
+    +t
+        display: none !important
+    
+.howText
+    display: flex
+    justify-content: space-between
+    color: $pink
+    width: 100%
+    margin-top: 70px
+    position: relative
+    +t
+        flex-direction: column
+        padding: 0
+        margin-top: 30px
+
+    &>div
+        width: calc( 100% / 3 )
+        display: flex
+        flex-direction: column
+        align-items: flex-start
+        z-index: 2
+        +t
+            width: 100%
+    span
+        text-align: left
+        font-size: 28px
+    p
+        text-align: left
+        color: $m-white
+        font-size: 14px
+        max-width: 70%
+        +t
+            max-width: 100%
+
+.howNumber
+    display: flex
+    justify-content: center
+    align-items: center
+    border-radius: 10px
+    color: $green
+    margin-bottom: 45px
+    font-size: 200px !important
+
+.howTitle
+    color: $green
+    margin-top: 5px
+    line-height: 24px
+
+.numberWrapper
+    display: flex
+    justify-content: center
+    align-items: center
+    height: 160px
+
+.howShiboon
+    position: absolute
+    z-index: 33

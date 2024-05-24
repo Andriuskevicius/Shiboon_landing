@@ -1,0 +1,67 @@
+@import ../../styles/helpers
+
+.faqSection
+    position: relative
+    padding: 0 10px
+    +t
+        padding: 0 10px
+        height: unset
+
+.faqRow
+    max-width: 1440px
+    margin: 0 auto
+    padding: 70px 50px
+    height: 100%
+    position: relative
+    display: flex
+    flex-direction: column
+    justify-content: space-between
+    align-items: center
+    +t
+        flex-direction: column
+        align-items: flex-start
+        padding: 0 10px
+        margin-bottom: 0
+
+.faqTextBlocksContainer
+    width: 100%
+    +t
+        margin-right: 0
+        min-width: unset
+        width: 100%
+        padding: 20px 10px
+        padding-top: 20px
+        z-index: 1
+        position: relative
+        margin-top: 0
+        padding-bottom: 40px
+    h1
+        font-size: 114px
+        line-height: 164px
+        color: $m-white
+        margin: 0 auto
+        font-weight: 900
+        +t
+            font-size: 36px
+            line-height: 40px
+            padding: 10px 0
+
+.faqWrapper
+    display: flex
+    width: 100%
+    justify-content: center
+    align-items: center
+    gap: 10px
+    margin-top: 50px
+    +t
+        margin-top: 25px
+    &>div
+        width: 100%
+        p
+            color: $m-white
+            font-weight: 900
+            font-size: 22px
+            line-height: 30px
+            +t
+                font-size: 16px
+                line-height: 20px

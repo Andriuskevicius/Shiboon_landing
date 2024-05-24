@@ -1,0 +1,40 @@
+@import ./helpers
+@import url('https://fonts.googleapis.com/css2?family=Madimi+One&family=Micro+5&display=swap')
+*
+  font-family: "Darker Grotesque", sans-serif
+  font-weight: 400
+  font-style: normal
+  font-weight: 900
+
+body
+    background: $black
+    overflow-x: hidden 
+
+html
+  scroll-behavior: smooth
+  +t
+    overflow-x: hidden
+
+a
+    text-decoration: none
+    color: #000
+
+p
+    color: $white
+
+::-webkit-scrollbar
+  width: 10px
+  +t
+    height: 5px
+
+::-webkit-scrollbar-track
+  background: $pink
+ 
+::-webkit-scrollbar-thumb
+  background: $grey
+
+::-webkit-scrollbar-thumb:hover
+  background: $violet
+
+strong
+  font-weight: 600

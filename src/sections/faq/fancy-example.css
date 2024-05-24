@@ -1,0 +1,94 @@
+/**
+* ----------------------------------------------
+* Demo styles
+* ----------------------------------------------
+**/
+.accordion {
+    border-top: dashed 2px rgba(98, 100, 90, 1);
+    border-bottom: dashed 2px rgba(98, 100, 90, 1);
+}
+
+.accordion__item + .accordion__item {
+    border-top: 2px dashed rgba(98, 100, 90, 1);
+}
+
+.accordion__button {
+    color: rgba(239, 255, 130, 1);
+    cursor: pointer;
+    font-size: 36px;
+    padding: 10px;
+    font-weight: 900;
+    width: 100%;
+    text-align: left;
+    border: none;
+}
+
+
+.accordion__button:before {
+    display: inline-block;
+    content: '';
+    height: 35px;
+    width: 35px;
+    margin-right: 12px;
+    border-bottom: 5px solid currentColor;
+    border-right: 5px solid currentColor;
+    position: absolute;
+    right: 50px;
+    transform: rotate(45deg);
+    color: rgba(98, 100, 90, 1);
+}
+
+.accordion__button[aria-expanded='true']::before,
+.accordion__button[aria-selected='true']::before {
+    transform: rotate(-135deg);
+    border-color: rgba(239, 255, 130, 1);
+
+}
+
+[hidden] {
+    display: none;
+}
+
+.accordion__panel {
+    padding: 15px 20px;
+    animation: fadein 0.35s ease-in;
+}
+
+/* -------------------------------------------------- */
+/* ---------------- Animation part ------------------ */
+/* -------------------------------------------------- */
+
+@keyframes fadein {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .accordion__button {
+        font-size: 22px;
+        padding: 10px;
+        padding-right: 30px;
+    }
+
+    .accordion__button:before {
+        display: inline-block;
+        content: '';
+        height: 18px;
+        width: 18px;
+        margin-right: 12px;
+        border-bottom: 3px solid currentColor;
+        border-right: 3px solid currentColor;
+        position: absolute;
+        right: 0px;
+        transform: rotate(45deg);
+    }
+    .accordion__panel {
+        padding: 10px;
+    }
+    
+  }

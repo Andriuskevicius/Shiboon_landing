@@ -1,0 +1,195 @@
+@import ../../styles/helpers
+
+.exchangeSection
+    position: relative
+    padding: 0 10px
+    h1
+        font-size: 180px
+        text-align: center
+        text-transform: uppercase
+        color: $green
+    +t
+        padding: 0 10px
+
+.exchangeRow
+    max-width: 1440px
+    margin: 0 auto
+    padding: 30px
+    position: relative
+    display: flex
+    flex-direction: row
+    justify-content: space-between
+    align-items: center
+    +t
+        flex-direction: column
+        align-items: flex-start
+        padding: 0 10px
+        padding-bottom: 30px
+
+.exchangeTextContainer
+    width: 25%
+    height: 100%
+    +t
+        margin-right: 0
+        min-width: unset
+        width: 100%
+        padding: 40px 10px
+        padding-top: 10px
+        z-index: 1
+        position: relative
+        margin-top: 0
+    h1
+        font-size: 60px
+        line-height: 65px
+        color: $yellow
+        max-width: 80%
+        +t
+            font-size: 36px
+            line-height: 38px
+            padding: 10px 0
+    h2
+        font-size: 36px
+        line-height: 50px
+        color: $yellow
+        max-width: 80%
+        +t
+            font-size: 30px
+            line-height: 32px
+            padding: 10px 0
+    p
+        font-size: 20px
+        color: #000
+        margin-top: 25px
+        margin-bottom: 45px
+        width: 80%
+        +t
+            word-wrap: break-word
+            font-size: 18px
+            margin: 20px 0
+            width: 100%
+    .small
+        font-size: 14px
+        color: #000
+        margin-top: 25px
+        margin-bottom: 45px
+        width: 80%
+        +t
+            word-wrap: break-word
+            font-size: 14px
+            width: 100%
+            margin: 20px 0
+    .violetText
+        font-size: 26px
+        color: $mint
+        margin-top: 80px
+        margin-bottom: 0
+        +t
+            word-wrap: break-word
+            font-size: 14px
+            margin-top: 30px
+    .violetText2
+        font-size: 20px
+        color: $m-white
+        margin-top: 0
+        margin-bottom: 0
+        +t
+            word-wrap: break-word
+            font-size: 14px
+
+
+.exchangeBoo
+    margin-right: 20px
+    +t
+        margin: 0
+
+.exchangeTableContainer
+    display: flex
+    flex-direction: column
+    align-items: center
+    max-width: 80%
+    width: 100%
+    background: #000
+    border-radius: 30px
+    padding: 40px
+    box-shadow: 18px 18px 0 $pink
+    +t
+        max-width: calc(100% - 20px)
+    h3
+        font-size: 40px
+        color: $pink
+        display: flex
+        align-items: center
+        gap: 7px
+        span
+            background: $mint
+            color: #000
+            border-radius: 10px
+            padding: 0 15px
+            font-family: "Darker Grotesque", sans-serif
+
+
+.exchangeInputsContainer
+    display: flex
+    align-items: center
+    justify-content: center
+    flex-grow: 1
+    flex-shrink: 0
+    gap: 7px
+    width: 100%
+    margin-top: 40px
+
+.buttonsSelect
+    +t
+        flex-direction: row
+
+.exchangeNow
+    background: $violet
+    color: #fff
+    font-size: 18px
+    padding: 7px 20px
+    border-radius: 15px
+    display: flex
+    justify-content: center
+    align-items: center
+    gap: 10px
+    width: fit-content
+    margin-top: 40px
+    text-transform: uppercase
+    position: relative
+    cursor: pointer
+    svg
+        path
+            fill: #fff
+    +t
+        width: 100%
+
+.exchangeTableContainerWrapper
+    display: flex
+    flex-direction: column
+    justify-content: center
+    align-items: center
+    gap: 30px
+    max-width: 45%
+    width: 100%
+    +t
+        max-width: 100%
+        justify-content: flex-start
+        align-items: flex-start
+        padding-bottom: 20px
+    &>div>p
+        text-align: center
+        color: #000
+        marign: 0
+        font-size: 20px
+        +t
+            font-size: 14px
+            word-break: break-word
+
+.extraText
+    +t
+        width: 100%
+
+.exchangeSection svg
+    position: absolute
+    top: 350px
+    left: 200px

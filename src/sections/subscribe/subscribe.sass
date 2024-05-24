@@ -1,0 +1,94 @@
+@import ../../styles/helpers
+
+.subSection
+    position: relative
+    padding: 0 10px
+    +t
+        padding: 0 10px
+        height: unset
+
+.subRow
+    max-width: 1440px
+    margin: 40px auto
+    margin-top: 20px
+    padding: 70px 30px
+    height: 100%
+    position: relative
+    display: flex
+    flex-direction: column
+    justify-content: space-between
+    align-items: center
+    &>svg
+        width: 100%
+        height: 100%
+        path
+            fill: $green
+    +t
+        flex-direction: column
+        align-items: flex-start
+        padding: 0 10px
+
+.subTextBlocksContainer
+    width: 100%
+    +t
+        margin-right: 0
+        min-width: unset
+        width: 100%
+        padding: 40px 10px
+        padding-top: 50px
+        z-index: 1
+        position: relative
+        margin-top: 0
+    h1
+        font-size: 56px
+        line-height: 64px
+        color: $white
+        text-align: center
+        max-width: 80%
+        margin: 0 auto
+        +t
+            font-size: 38px
+            line-height: 40px
+            padding: 0
+            max-width: 100%
+
+.subscribeWrapper
+    display: flex
+    width: 100%
+    justify-content: center
+    align-items: center
+    gap: 10px
+    margin-top: 50px
+    +t
+        flex-direction: column
+        gap: 20px
+    input
+        background: #fff
+        color: #000
+        font-size: 20px
+        padding: 10px 22px
+        padding-top: 6px
+        border-radius: 30px
+        max-width: 450px
+        width: 100%
+    button
+        background: $green
+        color: $black
+        font-size: 20px
+        padding: 6px 60px
+        padding-bottom: 12px
+        text-decoration: underline
+        border-radius: 30px
+        display: flex
+        justify-content: center
+        align-items: center
+        gap: 20px
+        position: relative
+        cursor: pointer
+        +t
+            width: 100%
+        svg 
+            path
+                fill: #fff
+    &:hover
+        background: $pink
