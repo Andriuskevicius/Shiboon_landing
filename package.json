@@ -3,7 +3,7 @@
   "private": true,
   "description": "Shiboon - shiboon.com",
   "version": "1.0.0",
-  "author": "Ernestas Andriuskevicius <andriuskevicius.ernestas@gmail.com>",
+  "author": "Cyber Scalper",
   "dependencies": {
     "@solana/spl-token": "^0.4.3",
     "@solana/wallet-adapter-base": "^0.9.23",

@@ -21,6 +21,9 @@
         display: flex
         gap: 20px
         margin-top: 30px
+        +t
+            display: none
+            flex-direction: column
         button
             border-radius: 30px
             background: $pink
@@ -29,10 +32,30 @@
             font-size: 20px
             text-transform: uppercase
             text-decoration: underline
+            +t
+                font-size: 30px
     +t
         flex-direction: column
         align-items: flex-start
         padding: 0 10px
+
+.buttonsWrapMobile
+    display: none
+    +t 
+        display: flex
+        flex-direction: column
+        gap: 20px
+        margin-top: 30px
+        width: 100%
+        button
+            width: 100%
+            border-radius: 30px
+            background: $pink
+            padding: 10px 60px
+            padding-top: 6px
+            font-size: 30px
+            text-transform: uppercase
+            text-decoration: underline
 
 .raidTextBlocksContainer
     width: 45%
@@ -51,9 +74,10 @@
         color: $green
         text-transform: uppercase
         +t
-            font-size: 42px
+            font-size: 75px
             padding: 20px 0
-            text-align: center
+            text-align: left
+            line-height: 65px
     h2
         font-size: 43px
         line-height: 43px
@@ -68,8 +92,11 @@
         width: 100%
         +t
             word-wrap: break-word
-            font-size: 20px
+            font-size: 25px
             width: 100%
+            margin-top: 15px
+            line-height: 26px
+            margin-bottom: 20px
         
     a
         background: #000

@@ -1,7 +1,6 @@
 import React from 'react'
 import { Link } from 'gatsby'
 import './footer.sass'
-import { StaticImage } from 'gatsby-plugin-image'
 import { useIntl } from 'gatsby-plugin-intl'
 
 const xLogo = <svg width="30" height="28" viewBox="0 0 30 28" fill="none" xmlns="http://www.w3.org/2000/svg">

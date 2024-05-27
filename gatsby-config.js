@@ -1,10 +1,10 @@
 module.exports = {
   siteMetadata: {
-    title: 'Shiboon',
+    title: 'Shiboon | The first world’s dual meme coin',
     description: '',
     // eslint-disable-next-line n/no-path-concat
     image: `${__dirname}/src/images/token-1.png`,
-    author: '@ErnestasAndriuskevicius',
+    author: '@CyberScalper',
     siteUrl: 'https://shiboon.com/'
   },
   plugins: [
@@ -51,12 +51,12 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-manifest',
       options: {
-        name: 'gatsby-starter-default',
-        short_name: 'starter',
+        name: 'shiboon-landing-page',
+        short_name: 'Shiboon',
         start_url: '/',
         background_color: 'rgb(3 9 22)',
         display: 'minimal-ui',
-        icon: 'src/images/lucky-boo-favicon.jpg' // This path is relative to the root of the site.
+        icon: 'src/images/favicon.png' // This path is relative to the root of the site.
       }
     }
   ]

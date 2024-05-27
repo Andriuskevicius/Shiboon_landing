@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import { Link } from 'gatsby'
-import { StaticImage } from 'gatsby-plugin-image'
 import './header.sass'
 import {
   WalletMultiButton, useWalletModal
@@ -12,22 +11,22 @@ import LogoIcon from '../../images/LogoIcon'
 const menu = [
   {
     title: 'Boopaper',
-    link: 'https://luckyboo.dog/wp-content/uploads/2024/03/Unleash_the_Fortunes_with_Lucky_Boo_Your_Ultimate_Crypto_Luck_Charm.pdf'
+    link: '/'
   },
   {
     title: 'Audit',
-    link: '/https://coinsult.net/projects/lucky-boo/'
+    link: '/'
   }
 ]
 
 const menu2 = [
   {
     title: 'Lightpaper',
-    link: 'https://luckyboo.dog/wp-content/uploads/2024/03/Unleash_the_Fortunes_with_Lucky_Boo_Your_Ultimate_Crypto_Luck_Charm.pdf'
+    link: '/'
   },
   {
     title: 'Social Meme Raid',
-    link: 'https://luckyboo.dog/wp-content/uploads/2024/03/Unleash_the_Fortunes_with_Lucky_Boo_Your_Ultimate_Crypto_Luck_Charm.pdf'
+    link: '/'
   }
 ]
 
@@ -93,9 +92,9 @@ const Header = () => {
   >
   <div className='menu first'>
     <ul className='menuInner'>
-        <li className='headerRegular'><Link target='_blank' to="https://twitter.com/LuckyBooToken">{xLogo}</Link></li>
-        <li className='headerRegular'><Link target='_blank' to="https://t.me/LuckyBooToken">{tLogo}</Link></li>
-        <li><Link target='_blank' to="https://zealy.io/c/luckybooairdrop">{zLogo}</Link></li>
+        <li className='headerRegular'><Link target='_blank' to="/">{xLogo}</Link></li>
+        <li className='headerRegular'><Link target='_blank' to="/">{tLogo}</Link></li>
+        <li><Link target='_blank' to="/">{zLogo}</Link></li>
     </ul>
     <ul className='menuInner'>
       {menu2.map((x, index) => (
@@ -152,9 +151,9 @@ const Header = () => {
       <li className='mobileLanguage'> <LanguageMenu /></li>
         </ul>
         <ul className="mobileSocial">
-          <li className='headerRegular'><Link target='_blank' to="https://twitter.com/LuckyBooToken">{xLogo}</Link></li>
-          <li className='headerRegular'><Link target='_blank' to="https://t.me/LuckyBooToken">{tLogo}</Link></li>
-          <li><Link target='_blank' to="https://zealy.io/c/luckybooairdrop">{zLogo}</Link></li>
+          <li className='headerRegular'><Link target='_blank' to="/">{xLogo}</Link></li>
+          <li className='headerRegular'><Link target='_blank' to="/">{tLogo}</Link></li>
+          <li><Link target='_blank' to="/">{zLogo}</Link></li>
       </ul>
     </div>
     <div className="mobile-menu-social-wrapper">
@@ -186,7 +185,7 @@ const Header = () => {
     : null
   }
   <button onClick={() => burgerHandler()} className="mobile-burger" aria-label="Burger menu open">
-        {menuBurger ? close : burger}
+        {menuBurger ? 'Close' : 'Menu'}
   </button>
   </header>
   )

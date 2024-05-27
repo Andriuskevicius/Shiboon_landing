@@ -17,7 +17,7 @@ const flowerBlue = <svg style={{ position: 'absolute', left: 20, bottom: 0 }} wi
 </defs>
 </svg>
 
-const flowerOrange = <svg style={{ position: 'absolute', right: 20, bottom: 90 }} width="160" height="161" viewBox="0 0 160 161" fill="none" xmlns="http://www.w3.org/2000/svg">
+const flowerOrange = <svg className='orange' style={{ position: 'absolute', right: 20, bottom: 90 }} width="160" height="161" viewBox="0 0 160 161" fill="none" xmlns="http://www.w3.org/2000/svg">
 <g clipPath="url(#clip0_44_600)">
 <path d="M26.7096 106.775C19.0295 91.2791 41.9271 81.7169 51.4782 77.9563C31.8701 57.1665 40.1457 43.1632 41.277 41.4982C53.7206 23.1842 66.7729 36.3805 72.4013 45.1737C75.2724 24.0182 87.5306 22.6181 92.7671 23.779C108.273 27.2163 97.9064 50.5274 96.9487 60.3371C121.638 48.7467 136.978 56.7345 139.029 63.539C145.79 84.5158 115.933 91.5907 100.265 94.8335C103.748 126.835 96.3775 134.487 86.1078 137.387C65.0869 141.485 64.3758 120.47 64.5656 105.687C51.9815 115.578 31.1717 115.778 26.7096 106.775Z" fill="#FF5D00" stroke="black" strokeWidth="3"/>
 <path d="M91.4307 90.5371C85.851 97.0292 76.0649 97.7689 69.5727 92.1891C63.0806 86.6094 62.341 76.8233 67.9207 70.3312C73.5004 63.8391 83.2866 63.0994 89.7787 68.6791C96.2708 74.2589 97.0104 84.045 91.4307 90.5371Z" fill="#7ED1FF" stroke="black" strokeWidth="3"/>
@@ -36,11 +36,13 @@ const Subscribe = () => {
     <div className="subRow">
       <LogoIcon className="logoSvg" />
       <div className="subTextBlocksContainer">
+        {flowerBlue}
         <h1>{intl.formatMessage({ id: 'subscription' })}</h1>
         <div className="subscribeWrapper">
           <input type="text" placeholder={intl.formatMessage({ id: 'enter-your-email' })} />
           <button>{intl.formatMessage({ id: 'subscribe' })}</button>
         </div>
+        {flowerOrange}
       </div>
     </div>
     {flowerBlue}

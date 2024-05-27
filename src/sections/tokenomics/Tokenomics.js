@@ -20,6 +20,7 @@ const Tokenomics = () => {
     <div id="exchange" className="exchangeSection">
       {flowerIcon}
       <h1>Token-o-mics</h1>
+      <h1 className='hMobile'>Token<br/>-o-<br/>mics</h1>
       <div className="exchangeRow">
         <div className="exchangeTextContainer">
           <h2>Marketing 63%</h2>

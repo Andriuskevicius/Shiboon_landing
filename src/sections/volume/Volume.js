@@ -34,8 +34,8 @@ const Volume = () => {
   <div className="tokeSection">
     <div className="tokenColumn">
       <div className="tokeTextBlocksContainer">
-        <h1>Choose your side &<br/> join the volume WarS!</h1>
-        <p>$HI and BOON, each loyal to their respective chains, found themselves in a playful rivalry. $HI rooted for Solana, while BOON championed Ethereum L2. Their banter turned into a friendly competition as they vied for their chain's victory.  Support your preferred chain and buy $HIBOON.</p>
+        <h1>Choose your side &<br/> join the volume Battles!</h1>
+        <p>Meet $SHIBOON, where two wacky mates, SHI and BOON, combine the quirks of a Shiba Inu and a Baboon into one wild crypto meme. SHI's obsessed with Solana, BOON's all about Ethereum, and their antics are anything but ordinary. They're championing their favourite blockchains within a single token, but who will reign supreme? Brace yourself as they navigate the memecoin world, battling to propel their token to the top.</p>
       </div>
       <div className='shiboonWrpper'>
         <div className='shiboonContainer' style={{ left: 'calc(39% - 130px)', top: 0 }}>

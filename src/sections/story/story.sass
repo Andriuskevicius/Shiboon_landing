@@ -16,18 +16,35 @@
         color: $green
         text-align: left
         margin-bottom: -150px
+        +t
+            font-size: 80px
+            line-height: 70px
+            margin-bottom: 0
+
 
     +t
+        gap: 20px
         padding: 0 10px
         height: unset
+        flex-direction: column
 
 .storyColumn
     max-width: 25%
     width: 100%
     display: flex
     flex-direction: column
+    +t
+        max-width: 100%
+        .storyShiboon
+            width: 100% !important
+            margin: 0 !important
     p   
         margin: 70px 0
         display: block
         position: relative
         max-width: 200px
+        +t
+            max-width: 100%
+            margin: 20px 0 !important
+            font-size: 26px
+            color: $m-white

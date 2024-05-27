@@ -24,6 +24,10 @@ const Tokenomics = () => {
             alt="Shiboon"
           />
       </div>
+      <div className="buttonsWrapMobile">
+          <button>Shuffle</button>
+          <button style={{ background: 'rgba(239, 255, 130, 1)' }}>Raid social</button>
+        </div>
     </div>
   </div>
   )

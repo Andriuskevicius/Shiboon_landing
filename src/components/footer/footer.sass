@@ -16,8 +16,9 @@ footer
     padding: 30px 40px
     height: 100%
     +t
-        padding: 20px
-        gap: 140px
+        padding: 0
+        padding-bottom: 80px
+        gap: 0
 
 
 .footerRows
@@ -37,8 +38,7 @@ footer
             max-width: 100%
             padding: 20px 0
             +t
-                padding: 10px
-                padding-bottom: 0
+                padding: 0
 
 .menuSocial 
     display: flex
@@ -47,6 +47,11 @@ footer
     justify-content: center
     gap: 10px
     color: $m-white
+    +t
+        margin: 0 auto
+        display: flex
+        justify-content: center
+        align-items: center
     p
         font-size: 16px
     ul
@@ -89,9 +94,15 @@ footer
         font-weight: 900
         color: $m-white
         display: block
+        +t
+            font-size: 40px
+            line-height: 40px
     a
         font-weight: 900
         color: $green
+        +t
+            font-size: 40px
+            line-height: 40px
 
 .footerLogo
     display: flex
@@ -113,7 +124,8 @@ footer
 
 .footerRows.mobile
     +t
-        flex-direction: column-reverse
-        gap: 0
+        flex-direction: column
+        gap: 150px
         p
-            font-size: 12px
+            font-size: 18px
+            margin-top: 0
