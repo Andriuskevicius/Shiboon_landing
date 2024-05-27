@@ -12,7 +12,8 @@ import getUsdcBalance from '../../functions/getUsdcBalance'
 import { useWallet } from '@solana/wallet-adapter-react'
 import Popup from 'reactjs-popup'
 import 'reactjs-popup/dist/index.css'
-import PoweredBy from '../../images/PoweredBy'
+import { useSelector } from 'react-redux'
+import { isBrowser } from 'react-device-detect'
 
 const arrowRightIcon = <svg width="29" height="16" viewBox="0 0 29 16" fill="none" xmlns="http://www.w3.org/2000/svg"> <path d="M28.7071 8.70711C29.0976 8.31659 29.0976 7.68342 28.7071 7.2929L22.3431 0.928934C21.9526 0.53841 21.3195 0.53841 20.9289 0.928934C20.5384 1.31946 20.5384 1.95262 20.9289 2.34315L26.5858 8L20.9289 13.6569C20.5384 14.0474 20.5384 14.6805 20.9289 15.0711C21.3195 15.4616 21.9526 15.4616 22.3431 15.0711L28.7071 8.70711ZM-8.74228e-08 9L28 9L28 7L8.74228e-08 7L-8.74228e-08 9Z" fill="black"></path> </svg>
 
@@ -76,6 +77,7 @@ const Buy = () => {
   const receiverPublicKey = '3NftXHu1MqfqLaYfDQ9Th9gESq4vtM8sxgbgxTKRdgrY'
   const solRate = 0.00099 / solanaPrice
   const usdcRate = 0.00099
+  const side = useSelector((state) => state.chooseSide)
 
   const [open, setOpen] = useState(false)
   const closeModal = () => setOpen(false)
@@ -288,41 +290,41 @@ const Buy = () => {
 
   <div id="buy" className="buySection">
     <div className="buyRow">
-    <div className='buyTableContainerWrapper' >
-        <div className='buyTableContainer1'>
-          <StaticImage
-            src="../../images/ShiIcon.png"
-            width={175}
-            style={{ top: -30, left: 0, transform: 'rotate(30deg)' }}
-            className="buyTokenTop"
-            placeholder="blured"
-            layout="fixed"
-            alt="Shiboon"
-          />
-          <h3>Buy ME ON SOLANA CHAIN</h3>
-          <span className='comingSoon'>By choosing to buy on solana chain you will promote $HI side of The $HIBOON coin</span>
-          <div className='buyInputsContainer'>
-            <div>
-              <div className='labelContainer'><span>{intl.formatMessage({ id: 'pay-with' })} {currency === 0 ? 'SOL' : 'USDT'}</span><button onClick={() => { handleMaxInput() }}>{intl.formatMessage({ id: 'max' })}</button></div>
-              <div className='inputWrap'>
-                <input onChange={handleChange} type="text" value={token1} />
-                {solIcon}
+    {side === 0 || isBrowser
+      ? <div className='buyTableContainerWrapper' >
+          <div className='buyTableContainer1'>
+            <StaticImage
+              src="../../images/ShiIcon.png"
+              width={175}
+              style={{ top: -30, left: 0, transform: 'rotate(30deg)' }}
+              className="buyTokenTop"
+              placeholder="blured"
+              layout="fixed"
+              alt="Shiboon"
+            />
+            <h3>Buy ME ON SOLANA CHAIN</h3>
+            <span className='comingSoon'>By choosing to buy on solana chain you will promote $HI side of The $HIBOON coin</span>
+            <div className='buyInputsContainer'>
+              <div>
+                <div className='labelContainer'><span>{intl.formatMessage({ id: 'pay-with' })} {currency === 0 ? 'SOL' : 'USDT'}</span><button onClick={() => { handleMaxInput() }}>{intl.formatMessage({ id: 'max' })}</button></div>
+                <div className='inputWrap'>
+                  <input onChange={handleChange} type="text" value={token1} />
+                  {solIcon}
+                </div>
+              </div>
+              <div>
+                <div className='labelContainer'><span>{intl.formatMessage({ id: 'receive-boo' })}</span></div>
+                <div className='inputWrap'>
+                <input type="text" value={token2} />
+                  <img className='coinIcon' src={CoinIcon} alt="coin icon" />
+                </div>
               </div>
             </div>
-            <div>
-              <div className='labelContainer'><span>{intl.formatMessage({ id: 'receive-boo' })}</span></div>
-              <div className='inputWrap'>
-              <input type="text" value={token2} />
-                <img className='coinIcon' src={CoinIcon} alt="coin icon" />
-              </div>
+            <button style={{ color: 'rgba(0, 0, 0, 1)' }} disabled onClick={() => { handleBuyBoo() }} className="buyNow">{intl.formatMessage({ id: 'buy-now' })} {loading ? spinner : null}</button>
+            <div className='powered'>
+              <span>Min 0.1 SOL - Max 50 SOL per wallet</span>
             </div>
           </div>
-          <button style={{ color: 'rgba(0, 0, 0, 1)' }} disabled onClick={() => { handleBuyBoo() }} className="buyNow">{intl.formatMessage({ id: 'buy-now' })} {loading ? spinner : null}</button>
-          <div className='powered'>
-            <span>Min 0.1 SOL - Max 50 SOL per wallet</span>
-          </div>
-        </div>
-        <div>
           <Popup className="modalWrapper" open={open} closeOnDocumentClick onClose={closeModal}>
             <div className="modal">
               <a className="close" onClick={closeModal}>
@@ -337,7 +339,7 @@ const Buy = () => {
             </div>
           </Popup>
         </div>
-      </div>
+      : null }
       <div className="chooseSide">
         <svg width="52" height="16" viewBox="0 0 52 16" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M0.292892 7.29289C-0.0976295 7.68342 -0.0976295 8.31658 0.292892 8.70711L6.65685 15.0711C7.04738 15.4616 7.68054 15.4616 8.07107 15.0711C8.46159 14.6805 8.46159 14.0474 8.07107 13.6569L2.41422 8L8.07107 2.34315C8.46159 1.95262 8.46159 1.31946 8.07107 0.928932C7.68054 0.538408 7.04738 0.538408 6.65685 0.928932L0.292892 7.29289ZM52 7L1 7V9L52 9V7Z" fill="#EFFF82"/>
@@ -347,7 +349,8 @@ const Buy = () => {
         <path d="M51.7071 8.70711C52.0976 8.31658 52.0976 7.68342 51.7071 7.29289L45.3431 0.928932C44.9526 0.538408 44.3195 0.538408 43.9289 0.928932C43.5384 1.31946 43.5384 1.95262 43.9289 2.34315L49.5858 8L43.9289 13.6569C43.5384 14.0474 43.5384 14.6805 43.9289 15.0711C44.3195 15.4616 44.9526 15.4616 45.3431 15.0711L51.7071 8.70711ZM51 7L0 7V9L51 9V7Z" fill="#EFFF82"/>
         </svg>
       </div>
-      <div className='buyTableContainerWrapper' >
+      {side === 1 || isBrowser
+        ? <div className='buyTableContainerWrapper' >
         <div className='buyTableContainer2'>
           <StaticImage
             src="../../images/BoonIcon.png"
@@ -397,6 +400,7 @@ const Buy = () => {
           </Popup>
         </div>
       </div>
+        : null }
     </div>
   </div>
   )

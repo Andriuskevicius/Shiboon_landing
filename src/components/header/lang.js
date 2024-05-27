@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { Link } from 'gatsby'
 
-const arrowDown = <svg width="12" height="7" viewBox="0 0 18 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+const arrowDown = <svg width="24" height="14" viewBox="0 0 18 10" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path d="M9.69778 9.32028C9.30948 9.69853 8.69052 9.69853 8.30222 9.32028L0.649399 1.86547C0.293533 1.51881 0.293533 0.946938 0.649399 0.60028C0.992313 0.266239 1.53894 0.266239 1.88185 0.600281L8.30222 6.85452C8.69052 7.23277 9.30948 7.23277 9.69778 6.85452L16.1181 0.600281C16.4611 0.266239 17.0077 0.26624 17.3506 0.600282C17.7065 0.94694 17.7065 1.51881 17.3506 1.86547L9.69778 9.32028Z" fill="rgba(33, 33, 33, 1)"></path>
 </svg>
 
