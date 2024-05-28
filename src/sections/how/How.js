@@ -11,7 +11,7 @@ const How = () => {
         <StaticImage
           src="../../images/ShiIcon.png"
           height={400}
-          style={{ top: -330, left: 30 }}
+          style={{ top: -270, left: 30 }}
           className="howShiboon"
           placeholder="memeraidsFish"
           layout="fixed"

@@ -22,12 +22,6 @@ const Tokenomics = () => {
       <h1>Token-o-mics</h1>
       <h1 className='hMobile'>Token<br/>-o-<br/>mics</h1>
       <div className="exchangeRow">
-        <div className="exchangeTextContainer">
-          <h2>Marketing 63%</h2>
-          <p className='violetText2'>63% of supply will be used for marketing efforts</p>
-          <h2>Airdrop 23%</h2>
-          <p className='violetText2'>23% of supply will be allocated to airdrop rewards</p>
-        </div>
         <StaticImage
             src="../../images/tokenomics.png"
             height={640}
@@ -37,10 +31,12 @@ const Tokenomics = () => {
             alt="Shiboon"
           />
         <div className="exchangeTextContainer">
-          <h2>DEX Liquidity 7%</h2>
-          <p className='violetText2'>7% of supply is reserved for CEX launches</p>
-          <h2>CEX Liquidity 7%</h2>
-          <p className='violetText2'>7% of supply is reserved for adding liquidity for DEX launch</p>
+          <h2>Supply</h2>
+          <p className='violetText2'>1.000.000.000 $SHBN</p>
+          <h2>Pre-sale</h2>
+          <h2>No taxes</h2>
+          <h2>LP Tokens burn</h2>
+          <h2>Contract ownership renounced</h2>
         </div>
       </div>
     </div>
