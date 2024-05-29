@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 const OMNISEND_API_URL = 'https://api.omnisend.com/v3/contacts'
-const OMNISEND_API_KEY = 'your-omnisend-api-key' // Replace with your actual API key
+const OMNISEND_API_KEY = '66565e362df1b42c69178f0f-25Wh5T214DSA0KHQMcxh2Qu6lyiJHwofL6KJ1xdxFJSM9kxlw7' // Replace with your actual API key
 
 export const subscribeUser = async (email) => {
   try {

@@ -14,6 +14,7 @@ import Subscribe from '../sections/subscribe/Subscribe'
 import Faq from '../sections/faq/Faq'
 import Tokenomics from '../sections/tokenomics/Tokenomics'
 import Volume from '../sections/volume/Volume'
+import Roadmap from '../sections/roadmap/Roadmap'
 
 const IndexPage = () => {
   const intl = useIntl()
@@ -27,6 +28,7 @@ const IndexPage = () => {
         <Story />
         <Tokenomics />
         <How />
+        <Roadmap />
         <Raid />
         <Featured />
         <Subscribe />

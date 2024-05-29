@@ -38,10 +38,11 @@ const Volume = () => {
         <p>Meet $SHIBOON, where two wacky mates, SHI and BOON, combine the quirks of a Shiba Inu and a Baboon into one wild crypto meme. SHI's obsessed with Solana, BOON's all about Ethereum, and their antics are anything but ordinary. They're championing their favourite blockchains within a single token, but who will reign supreme? Brace yourself as they navigate the memecoin world, battling to propel their token to the top.</p>
       </div>
       <div className='shiboonWrpper'>
-        <div className='shiboonContainer' style={{ left: 'calc(39% - 130px)', top: 0 }}>
+        <div className='shiboonContainer' style={{ left: 'calc(50% - 140px)', top: 0 }}>
           <StaticImage
               src="../../images/shiIcon.png"
               height={120}
+              style={{ transform: 'rotate(15deg)' }}
               className="volumeImage"
               placeholder="blurred"
               layout="fixed"
@@ -49,7 +50,7 @@ const Volume = () => {
           />
           <div style={{ color: 'rgba(239, 255, 130, 1)', alignItems: 'start', gap: 5 }}>
             <span>$HI</span>
-            <span>39%</span>
+            <span>50%</span>
             {arrowDown}
           </div>
         </div>
@@ -64,15 +65,16 @@ const Volume = () => {
           <span style={{ color: 'rgba(239, 255, 130, 1)' }}>Solana chain</span>
           <span style={{ color: 'rgba(255, 130, 130, 1)' }}>Ethereum L2 chain</span>
         </div>
-        <div className='shiboonContainer' style={{ left: 'calc(42% - 130px)', bottom: 22 }}>
+        <div className='shiboonContainer' style={{ left: 'calc(50% - 100px)', bottom: 22 }}>
           <div style={{ color: 'rgba(255, 130, 130, 1)' }}>
             {arrowUp}
-            <span>61%</span>
+            <span>50%</span>
             <span>BOON</span>
           </div>
           <StaticImage
               src="../../images/boonIcon.png"
               height={120}
+              style={{ transform: 'rotate(-15deg)' }}
               className="volumeImage"
               placeholder="blurred"
               layout="fixed"

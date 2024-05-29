@@ -1,0 +1,134 @@
+@import ../../styles/helpers
+
+.roadmapSection
+    position: relative
+    padding: 0 10px
+    background: $black
+    +t
+        padding: 0 10px
+        height: unset
+
+.roadmapRow
+    max-width: 1440px
+    margin: 40px auto
+    padding: 90px 35px
+    position: relative
+    display: flex
+    flex-direction: column
+    justify-content: space-between
+    align-items: center
+    h2
+        font-size: 110px
+        line-height: 80px
+        color: $m-white
+        text-align: left
+        width: 100%
+    +t
+        flex-direction: column
+        align-items: flex-start
+        padding: 0 10px
+
+.roadmapFlowersWrap
+    position: relative
+    padding: 150px 0
+    &>svg
+        padding: 0 40px
+        padding-left: 60px
+
+.roadmapFlowersInner
+    position: absolute
+    display: flex
+    justify-content: space-between
+    align-items: center
+    top: 80px
+    width: 100%
+
+.flowerWrapper1
+    h4
+        color: rgba(130, 210, 255, 1)
+
+    svg
+        transform: rotate(0deg)
+
+.flowerWrapper2
+    h4
+        color: rgba(177, 255, 130, 1)
+    svg
+        transform: rotate(180deg)
+        path:first-child
+            fill: rgba(177, 255, 130, 1)
+        path:last-child
+            fill: rgba(255, 174, 174, 1)
+
+.flowerWrapper3
+    h4
+        color: rgba(238, 130, 255, 1)
+    svg
+        transform: rotate(90deg)
+        path:first-child
+            fill: rgba(238, 130, 255, 1)
+        path:last-child
+            fill: rgba(255, 151, 93, 1)
+
+
+
+.flowerWrapper4
+    h4
+        color: rgba(252, 133, 152, 1)
+    svg
+        transform: rotate(200deg)
+        path:first-child
+            fill: rgba(252, 133, 152, 1)
+        path:last-child
+            fill: rgba(255, 185, 81, 1)
+
+.flowerWrapper5
+    h4
+        color: rgba(160, 151, 255, 1)
+    svg
+        transform: rotate(300deg)
+        path:first-child
+            fill: rgba(160, 151, 255, 1)
+        path:last-child
+            fill: rgba(255, 174, 174, 1)
+
+
+.flowerWrapper1, .flowerWrapper2, .flowerWrapper3, .flowerWrapper4, .flowerWrapper5
+    h4
+        font-size: 30px
+    p
+        font-size: 16px
+        line-height: 18px
+        max-width: 80%
+        color: $m-white
+    
+@-webkit-keyframes
+  from
+    -webkit-transform: rotate(0deg)
+    -o-transform: rotate(0deg)
+    transform: rotate(0deg)
+  to
+    -webkit-transform: rotate(360deg)
+    -o-transform: rotate(360deg)
+    transform: rotate(360deg)
+
+@keyframes rotating
+  from
+    -ms-transform: rotate(0deg)
+    -moz-transform: rotate(0deg)
+    -webkit-transform: rotate(0deg)
+    -o-transform: rotate(0deg)
+    transform: rotate(0deg)
+  to
+    -ms-transform: rotate(360deg)
+    -moz-transform: rotate(360deg)
+    -webkit-transform: rotate(360deg)
+    -o-transform: rotate(360deg)
+    transform: rotate(360deg)
+
+.flowerWrapper1 svg, .flowerWrapper2 svg, .flowerWrapper3 svg, .flowerWrapper4 svg, .flowerWrapper5 svg
+  -webkit-animation: rotating 5s linear infinite
+  -moz-animation: rotating 5s linear infinite
+  -ms-animation: rotating 5s linear infinite
+  -o-animation: rotating 5s linear infinite
+  animation: rotating 5s linear infinite
