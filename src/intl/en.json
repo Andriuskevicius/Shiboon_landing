@@ -18,7 +18,7 @@
   "pay-with": "Pay with",
   "max": "Max",
   "receive-boo": "Receive $SHBN",
-  "buy-now": "Buy for 42% APY",
+  "buy-now": "Buy now",
   "notice": "Alternatively, you can directly send Sol to our designated address:",
   "how-title1": "Direct Purchase on Solana Chain",
   "story-text1": "Shiboon, world cutest - puppy, conquers crypto's choppy waters, from China to the Western world, soaring above the chaos with a kiteboard he comes to a realization: rise above it.",
@@ -67,5 +67,7 @@
   "bark-to": "Mail to",
   "footer-text": "$hiboon is a meme cryptocurrency for entertainment without intrinsic value, financial return expectations, a formal team, or a roadmap. It's designed purely for fun.",
   "rights": "All rights reserved.",
-  "follow": "Follow us on:"
+  "follow": "Follow us on:",
+  "subscription-success": "You have successfully subscribed to your success future!",
+  "subscription-fail": "Upsi daisy something gone wrong.."
 }

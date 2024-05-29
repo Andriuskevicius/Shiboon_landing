@@ -1,7 +1,6 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './subscribe.sass'
-import { StaticImage } from 'gatsby-plugin-image'
-import { Link } from 'gatsby'
+import { subscribeUser } from './omnisendService'
 import { useIntl } from 'gatsby-plugin-intl'
 import LogoIcon from '../../images/LogoIcon'
 
@@ -31,6 +30,17 @@ const flowerOrange = <svg className='orange' style={{ position: 'absolute', righ
 
 const Subscribe = () => {
   const intl = useIntl()
+  const [email, setEmail] = useState('')
+  const [message, setMessage] = useState('')
+
+  const handleSubscribe = async () => {
+    try {
+      await subscribeUser(email)
+      setMessage(intl.formatMessage({ id: 'subscription-success' }))
+    } catch (error) {
+      setMessage(intl.formatMessage({ id: 'subscription-fail' }))
+    }
+  }
   return (
   <div className="subSection">
     <div className="subRow">
@@ -39,9 +49,10 @@ const Subscribe = () => {
         {flowerBlue}
         <h1>{intl.formatMessage({ id: 'subscription' })}</h1>
         <div className="subscribeWrapper">
-          <input type="text" placeholder={intl.formatMessage({ id: 'enter-your-email' })} />
-          <button>{intl.formatMessage({ id: 'subscribe' })}</button>
+          <input type="text" placeholder={intl.formatMessage({ id: 'enter-your-email' })} onChange={(e) => setEmail(e.target.value)} value={email} />
+          <button onClick={handleSubscribe}>{intl.formatMessage({ id: 'subscribe' })}</button>
         </div>
+        {message && <p>{message}</p>}
         {flowerOrange}
       </div>
     </div>

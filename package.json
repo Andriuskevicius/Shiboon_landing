@@ -5,6 +5,7 @@
   "version": "1.0.0",
   "author": "Cyber Scalper",
   "dependencies": {
+    "@reduxjs/toolkit": "^2.2.5",
     "@solana/spl-token": "^0.4.3",
     "@solana/wallet-adapter-base": "^0.9.23",
     "@solana/wallet-adapter-react": "^0.15.35",
@@ -12,6 +13,7 @@
     "@solana/wallet-adapter-wallets": "^0.19.32",
     "@solana/wallet-standard-wallet-adapter-react": "^1.1.2",
     "@solana/web3.js": "^1.91.4",
+    "axios": "^1.7.2",
     "bs58": "^5.0.0",
     "buffer": "^6.0.3",
     "classnames": "^2.3.1",

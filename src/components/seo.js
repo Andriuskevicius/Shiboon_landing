@@ -9,7 +9,7 @@ import * as React from 'react'
 import PropTypes from 'prop-types'
 import { useStaticQuery, graphql } from 'gatsby'
 
-function Seo ({ description, title, children }) {
+function Seo ({ description = '', title, children }) {
   const { site } = useStaticQuery(
     graphql`
       query {
@@ -38,18 +38,33 @@ function Seo ({ description, title, children }) {
       <meta name="twitter:creator" content={site.siteMetadata?.author || ''} />
       <meta name="twitter:title" content={title} />
       <meta name="twitter:description" content={metaDescription} />
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-S7NYP33JFG"></script>
+      <script>{`
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-S7NYP33JFG');
+      `}</script>
+      <script>{`
+          (function(h,o,t,j,a,r){
+              h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
+              h._hjSettings={hjid:5002617,hjsv:6};
+              a=o.getElementsByTagName('head')[0];
+              r=o.createElement('script');r.async=1;
+              r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+              a.appendChild(r);
+          })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
+      `}</script>
       {children}
     </>
   )
 }
 
-Seo.defaultProps = {
-  description: ''
-}
-
 Seo.propTypes = {
   description: PropTypes.string,
-  title: PropTypes.string.isRequired
+  title: PropTypes.string.isRequired,
+  children: PropTypes.node
 }
 
 export default Seo

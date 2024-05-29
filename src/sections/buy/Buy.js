@@ -68,26 +68,29 @@ alt="Shiboon"
 
 const Buy = () => {
   const intl = useIntl()
-  const [currency, setCurrency] = useState(0)
   const [token1, setToken1] = useState(0)
-  const [loading, setLoading] = useState(false)
   const [token2, setToken2] = useState(0)
+  const [loading, setLoading] = useState(0)
+  const [tokenRate1, setTokenRate1] = useState(0)
+  const [tokenRate2, setTokenRate2] = useState(0)
   const [solanaPrice, setSolanaPrice] = useState(1)
   const wallet = useWallet()
-  const receiverPublicKey = '3NftXHu1MqfqLaYfDQ9Th9gESq4vtM8sxgbgxTKRdgrY'
-  const solRate = 0.00099 / solanaPrice
-  const usdcRate = 0.00099
+  const receiverPublicKey = 'SHBNxvdFjPTXMg2KS2ZfzfejrexdCBcND1jrAjawBQQ'
+  const solRate = 1 / solanaPrice
+  const usdcRate = 1
   const side = useSelector((state) => state.chooseSide)
 
   const [open, setOpen] = useState(false)
   const closeModal = () => setOpen(false)
 
-  const handleBuyBoo = () => {
-    if (token1 > 0) {
-      if (currency === 0) {
+  const handleBuyToken = (currency) => {
+    console.log('Pressed')
+    if (token1 > 0 || token2 > 0) {
+      if (currency === 1) {
         sendSol(receiverPublicKey)
+        console.log('Send SOL')
       } else {
-        sendSplToken(receiverPublicKey)
+        console.log('Send ETH')
       }
     } else {
       alert('Please enter valid value')
@@ -103,23 +106,20 @@ const Buy = () => {
     }
   }
 
-  async function sendSol (receiverPublicKey) {
-    // await wallet.connect(() => {})
-    console.log('SOL')
-    setLoading(true)
-    console.log('Get: ', wallet.publicKey)
+  const sendSol = async (receiverPublicKey) => {
+    console.log('Starting initialization')
+    setLoading(1)
 
     if (wallet.publicKey) {
-      if (token1 < 0.00001) {
-        setLoading(false)
+      if (token1 < 0.000001) {
+        setLoading(0)
         setToken1(0)
         setToken2(0)
+        setTokenRate1(0)
         return alert('Minimum allowed transaction 0.1 SOL')
       }
 
-      // const clusterApiUrl = 'https://api.devnet.solana.com' // Devnet cluster URL
-      // const clusterApiUrl = 'https://api.mainnet-beta.solana.com'
-      const clusterApiUrl = 'https://nd-534-355-062.p2pify.com/afdf7ebb89d90947120547522e6497d5' // Mainet cluster URL
+      const clusterApiUrl = 'https://solana-mainnet.core.chainstack.com/2cb4b6f620d5bd6151f5950fc2ff4f8e' // Mainet cluster URL
 
       const connection = new web3.Connection(clusterApiUrl)
       console.log(connection)
@@ -135,10 +135,6 @@ const Buy = () => {
           lamports: web3.LAMPORTS_PER_SOL * token1
         })
       )
-      // transaction.feePayer = wallet
-
-      // transaction.recentBlockhash = (await connection.getRecentBlockhash()).blockhash
-
       try {
         // const signature = await window.solana.signAndSendTransaction(transaction)
         const latestBlockhash = await connection.getLatestBlockhash()
@@ -146,134 +142,51 @@ const Buy = () => {
         transaction.recentBlockhash = latestBlockhash.blockhash
         const signature = await wallet.sendTransaction(transaction, connection)
         console.log('signature: ', signature)
-        setLoading(false)
+        setLoading(0)
         setToken1(0)
         setToken2(0)
+        setTokenRate1(0)
         setOpen(o => !o)
-        // const confirmed = await connection.confirmTransaction(signature, 'processed')
-        // console.log('Signature from adapter: ', confirmed)
-        // // Send the transaction
       } catch (e) {
         setToken1(0)
         setToken2(0)
-        setLoading(false)
+        setTokenRate1(0)
+        setLoading(0)
         console.log('Did not received signature', e)
         alert(e)
       }
     } else {
-      setLoading(false)
+      setLoading(0)
       setToken1(0)
       setToken2(0)
+      setTokenRate1(0)
       handleWallet()
     }
   }
 
-  async function sendSplToken () {
-    setLoading(true)
-    const receiverPublicKey = 'Hz8KkmHEDEUNfSxPgi5xxp6381tkvgBzMKXTa367rtBZ'
-    const tokenMintAddress = '4zMMC9srt5Ri5X14GAgXhaHii3GnPAEERYPJgZJDncDU'
-    const provider = window.solana
-    const senderPublicKeyInstance = provider.publicKey
-    if (!senderPublicKeyInstance) {
-      setLoading(false)
-      setToken1(0)
-      setToken2(0)
-      window.scrollTo(0, 0)
-      return alert('Solana wallet is not installed or not connected.')
-    }
-
-    const connection = new web3.Connection('https://api.devnet.solana.com/', 'confirmed')
-    const mintPublicKey = new web3.PublicKey(tokenMintAddress)
-
-    try {
-      // const senderPublicKeyString = senderPublicKeyInstance.toBase58()
-      // const sender = new web3.PublicKey(senderPublicKeyString)
-      const receiverPublicKeyInstance = new web3.PublicKey(receiverPublicKey)
-
-      // Get the token account of the sender
-      const fromTokenAccount = await splToken.getOrCreateAssociatedTokenAccount(
-        connection,
-        publicKey,
-        mintPublicKey,
-        publicKey
-      )
-      console.log('Token account: ', fromTokenAccount.address.toString())
-      // Get the token account of the receiver
-      const associatedDestinationTokenAddr = await splToken.getOrCreateAssociatedTokenAccount(
-        connection,
-        publicKey,
-        mintPublicKey,
-        receiverPublicKeyInstance
-      )
-      console.log('To token account: ', associatedDestinationTokenAddr.address.toString())
-
-      // Construct the transfer instruction
-      const transferInstruction = splToken.createTransferInstruction(
-        fromTokenAccount.address,
-        associatedDestinationTokenAddr.address,
-        publicKey,
-        token1 * 1000000,
-        [],
-        splToken.TOKEN_PROGRAM_ID
-      )
-      console.log('Instructions: ', transferInstruction)
-      // Get recent blockhash
-      const blockhash = await connection.getRecentBlockhash()
-
-      // Sign the transaction
-      const transaction = new web3.Transaction().add(transferInstruction)
-      transaction.recentBlockhash = blockhash.blockhash
-      transaction.feePayer = publicKey
-      console.log('Transaction: ', transaction)
-      try {
-        const signature = await window.solana.signAndSendTransaction(transaction)
-        console.log('Transaction sent:', signature)
-        setLoading(false)
-        setOpen(o => !o)
-        setToken1(0)
-        setToken2(0)
-      } catch (error) {
-        console.error('Canceled:', error)
-      }
-    } catch (error) {
-      setLoading(false)
-      console.error('Error sending transaction:', error)
-      // Handle the error appropriately
-    }
-  }
-
-  function handleChange (e) {
-    if (e.target.value) {
-      const replaceIfComma = e.target.value.replace(/,/g, '.')
+  function handleChange (e, currency) {
+    const replaceIfComma = e.target.value.replace(/,/g, '.')
+    if (currency === 1) {
       setToken1(replaceIfComma)
+      setTokenRate1((replaceIfComma / solRate).toFixed(2))
     } else {
-      setToken1(e.target.value)
+      setToken2(replaceIfComma)
+      setTokenRate2((replaceIfComma / solRate).toFixed(2))
     }
-    if (currency === 0) {
-      setToken2((e.target.value / solRate).toFixed(2))
-    } else {
-      setToken2((e.target.value / usdcRate).toFixed(2))
-    }
-    console.log(e.target.value, solanaPrice)
+    console.log(e.target.value, solanaPrice, tokenRate1, tokenRate2)
   }
 
-  const changeCurrency = (currency) => {
-    setToken1(0)
-    setToken2(0)
-    setCurrency(currency)
-  }
-
-  const handleMaxInput = async () => {
+  const handleMaxInput = async (currency) => {
     const provider = window.solana
     const senderPublicKeyInstance = provider.publicKey
     if (currency === 0) {
       const balance = await getSolBalance(senderPublicKeyInstance)
       setToken1(balance - 0.01)
-      setToken2(((balance - 0.01) / solRate).toFixed(2))
+      setTokenRate1(((balance - 0.01) / solRate).toFixed(2))
     } else {
       const balance = await getUsdcBalance(senderPublicKeyInstance)
-      setToken1(balance - 0.1)
-      setToken2(((balance - 0.1) / usdcRate).toFixed(2))
+      setToken2(balance - 0.1)
+      setTokenRate2(((balance - 0.1) / usdcRate).toFixed(2))
       // console.log('Got balance: ', balance)
     }
   }
@@ -306,21 +219,21 @@ const Buy = () => {
             <span className='comingSoon'>By choosing to buy on solana chain you will promote $HI side of The $HIBOON coin</span>
             <div className='buyInputsContainer'>
               <div>
-                <div className='labelContainer'><span>{intl.formatMessage({ id: 'pay-with' })} {currency === 0 ? 'SOL' : 'USDT'}</span><button onClick={() => { handleMaxInput() }}>{intl.formatMessage({ id: 'max' })}</button></div>
+                <div className='labelContainer'><span>{intl.formatMessage({ id: 'pay-with' })} SOL</span><button onClick={() => { handleMaxInput(0) }}>{intl.formatMessage({ id: 'max' })}</button></div>
                 <div className='inputWrap'>
-                  <input onChange={handleChange} type="text" value={token1} />
+                  <input onChange={(e) => handleChange(e, 1)} type="text" value={token1} />
                   {solIcon}
                 </div>
               </div>
               <div>
                 <div className='labelContainer'><span>{intl.formatMessage({ id: 'receive-boo' })}</span></div>
                 <div className='inputWrap'>
-                <input type="text" value={token2} />
+                  <span className='tokenRatesInput'>{tokenRate1}</span>
                   <img className='coinIcon' src={CoinIcon} alt="coin icon" />
                 </div>
               </div>
             </div>
-            <button style={{ color: 'rgba(0, 0, 0, 1)' }} disabled onClick={() => { handleBuyBoo() }} className="buyNow">{intl.formatMessage({ id: 'buy-now' })} {loading ? spinner : null}</button>
+            <button style={{ color: 'rgba(0, 0, 0, 1)' }} onClick={() => { handleBuyToken(1) }} className="buyNow">{intl.formatMessage({ id: 'buy-now' })} {loading === 1 ? spinner : null}</button>
             <div className='powered'>
               <span>Min 0.1 SOL - Max 50 SOL per wallet</span>
             </div>
@@ -365,21 +278,21 @@ const Buy = () => {
           <span className='comingSoon'>By choosing to buy on ETHEREUM L2 chain you will promote BOON side of The $HIBOON coin</span>
           <div className='buyInputsContainer'>
             <div>
-              <div className='labelContainer'><span>{intl.formatMessage({ id: 'pay-with' })} {currency === 0 ? 'ETH' : 'USDT'}</span><button onClick={() => { handleMaxInput() }}>{intl.formatMessage({ id: 'max' })}</button></div>
+              <div className='labelContainer'><span>{intl.formatMessage({ id: 'pay-with' })} ETH</span><button onClick={() => { handleMaxInput(1) }}>{intl.formatMessage({ id: 'max' })}</button></div>
               <div className='inputWrap'>
-                <input onChange={handleChange} type="text" value={token1} />
+                <input onChange={(e) => handleChange(e, 2)} type="text" value={token2} />
                 {ethIcon}
               </div>
             </div>
             <div>
               <div className='labelContainer'><span>{intl.formatMessage({ id: 'receive-boo' })}</span></div>
               <div className='inputWrap'>
-                <input type="text" value={token2} />
+                <span className='tokenRatesInput'>{tokenRate2}</span>
                 <img className='coinIcon' src={CoinIcon} alt="coin icon" />
               </div>
             </div>
           </div>
-          <button disabled onClick={() => { handleBuyBoo() }} className="buyNow">{intl.formatMessage({ id: 'buy-now' })} {loading ? spinner : null}</button>
+          <button onClick={() => { handleBuyToken(2) }} className="buyNow">{intl.formatMessage({ id: 'buy-now' })} {loading === 2 ? spinner : null}</button>
           <div className='powered'>
             <span>Min 0.01 ETH - Max 5 ETH per wallet</span>
           </div>
