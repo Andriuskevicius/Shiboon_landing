@@ -24,7 +24,7 @@ const How = () => {
           src="../../images/ShiIcon.png"
           height={400}
           style={{ top: -270, left: 30 }}
-          className="howShiboon"
+          className="howShiboon first"
           placeholder="memeraidsFish"
           layout="fixed"
           alt="Shiboon"
@@ -34,7 +34,7 @@ const How = () => {
           src="../../images/BoonIcon.png"
           height={400}
           style={{ top: -240, right: 0 }}
-          className="howShiboon"
+          className="howShiboon second"
           placeholder="memeraidsFish"
           layout="fixed"
           alt="Shiboon"

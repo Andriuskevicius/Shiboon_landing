@@ -22,6 +22,8 @@
         position: absolute
         top: -90px
         left: 60%
+        +t
+            display: none
     +t
         flex-direction: column
         align-items: flex-start
@@ -41,7 +43,7 @@
         min-width: unset
         width: 100%
         padding: 40px 10px
-        padding-top: 50px
+        padding-top: 450px
         z-index: 2
         position: relative
         margin-top: 0
@@ -54,7 +56,7 @@
         margin-top: 50px
         display: block
         +t
-            font-size: 36px
+            font-size: 50px
             line-height: 40px
             padding: 20px 0
             margin-top: 0
@@ -177,3 +179,12 @@
 .howShiboon
     position: absolute !important
     z-index: 33
+    +t
+        width: 300px !important
+        height: 300px !important
+        &.first
+            top: -150px !important
+            left: -80px !important
+        &.second
+            top: 180px !important
+            right: -80px !important

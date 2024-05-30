@@ -43,7 +43,7 @@ const Story = () => {
           </defs>
         </svg>
     </div>
-    <div className="storyColumn">
+    <div className="storyColumn second">
       <StaticImage
             src="../../images/story2.png"
             width={250}
@@ -55,7 +55,7 @@ const Story = () => {
         />
       <p style={{ marginTop: 40 }}>In the vibrant world of decentralized finance, $HI, the adventurous Shiba Inu, and BOON, the wise baboon, met unexpectedly.</p>
     </div>
-    <div className="storyColumn">
+    <div className="storyColumn third">
       {currIcon}
       <p style={{ marginTop: 10 }}>$HI chased memes on Solana while BOON explored hidden gems & labyrinthine depths of Ethereum L2. Their encounter led to the discovery of $HIBOON, sparking a shared passion for crypto.</p>
       <StaticImage
@@ -80,7 +80,7 @@ const Story = () => {
           </svg>
 
     </div>
-    <div className="storyColumn">
+    <div className="storyColumn fourth">
     <StaticImage
           src="../../images/story4.png"
           width={250}
