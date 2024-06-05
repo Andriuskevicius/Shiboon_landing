@@ -26,7 +26,7 @@ const Roadmap = () => {
   return (
     <div className="roadmapSection">
       <div className="roadmapRow">
-        <h2>$SHIBOON<br/>ROADMAP</h2>
+        <h2>$HIBOON<br/>ROADMAP</h2>
         <div className='roadmapFlowersWrap'>
           {isBrowser ? fullArrow : verticalArrow}
           <div className="roadmapFlowersInner">

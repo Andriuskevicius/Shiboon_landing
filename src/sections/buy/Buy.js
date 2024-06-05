@@ -233,7 +233,7 @@ const Buy = () => {
                 </div>
               </div>
             </div>
-            <button style={{ color: 'rgba(0, 0, 0, 1)' }} onClick={() => { handleBuyToken(1) }} className="buyNow">{intl.formatMessage({ id: 'buy-now' })} {loading === 1 ? spinner : null}</button>
+            <button style={{ color: 'rgba(0, 0, 0, 1)' }} onClick={() => { handleBuyToken(1) }} className="buyNow">{intl.formatMessage({ id: 'buy-now1' })} {loading === 1 ? spinner : null}</button>
             <div className='powered'>
               <span>Min 0.1 SOL - Max 50 SOL per wallet</span>
             </div>
@@ -292,7 +292,7 @@ const Buy = () => {
               </div>
             </div>
           </div>
-          <button onClick={() => { handleBuyToken(2) }} className="buyNow">{intl.formatMessage({ id: 'buy-now' })} {loading === 2 ? spinner : null}</button>
+          <button onClick={() => { handleBuyToken(2) }} className="buyNow">{intl.formatMessage({ id: 'buy-now2' })} {loading === 2 ? spinner : null}</button>
           <div className='powered'>
             <span>Min 0.01 ETH - Max 5 ETH per wallet</span>
           </div>

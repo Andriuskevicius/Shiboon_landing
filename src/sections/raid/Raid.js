@@ -1,8 +1,32 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './raid.sass'
-import { StaticImage } from 'gatsby-plugin-image'
+import meme1 from '../../../static/meme-1.jpg'
+import meme2 from '../../../static/meme-2.jpg'
 
 const Tokenomics = () => {
+  const [currentImage, setCurrentImage] = useState(meme1)
+  const [loading, setLoading] = useState(false)
+  const images = [meme1, meme2]
+
+  const shuffleImage = () => {
+    setLoading(true)
+    console.log('Random')
+    const randomIndex = Math.floor(Math.random() * images.length)
+    setCurrentImage(images[randomIndex])
+    setTimeout(() => {
+      setLoading(false)
+    }, 1000)
+  }
+
+  const shareOnTwitter = () => {
+    const text = encodeURIComponent('Check out this meme!')
+    const url = encodeURIComponent(window.location.href)
+    const image = encodeURIComponent(currentImage)
+    const twitterShareUrl = `https://twitter.com/intent/tweet?text=${text}&url=${url}&hashtags=SHIBOON&media=${url}${image}`
+
+    window.open(twitterShareUrl, '_blank')
+  }
+
   return (
   <div id="social-meme-raid" className="tokeSection">
     <div className="tokeRow">
@@ -10,23 +34,24 @@ const Tokenomics = () => {
         <h1>LEt’s Raid social Network</h1>
         <p>Spread the word and raid social network. Let the laughter ring out as $HI and BOON lead the charge on a riotous raid of epic proportions. JOIN THE ARMY press that RAID SOCIAL button. Let's unleash the $HIBOON meme madness onto the social networks!</p>
         <div className="buttonsWrap">
-          <button>Shuffle</button>
-          <button style={{ background: 'rgba(239, 255, 130, 1)' }}>Raid social</button>
+          <button onClick={shuffleImage}>Shuffle</button>
+          <button onClick={shareOnTwitter} style={{ background: 'rgba(239, 255, 130, 1)' }}>Raid social</button>
         </div>
       </div>
       <div className='imageWrapper'>
-        <StaticImage
-            src="../../images/chat.png"
+        {loading
+          ? 'Shuffling...'
+          : <img
+            src={currentImage}
             height={500}
-            className="tokeBoo"
-            placeholder="memeraidsFish"
-            layout="constrained"
+            className="memeRaid"
             alt="Shiboon"
           />
+          }
       </div>
       <div className="buttonsWrapMobile">
-          <button>Shuffle</button>
-          <button style={{ background: 'rgba(239, 255, 130, 1)' }}>Raid social</button>
+          <button onClick={shuffleImage}>Shuffle</button>
+          <button onClick={shareOnTwitter} style={{ background: 'rgba(239, 255, 130, 1)' }}>Raid social</button>
         </div>
     </div>
   </div>
