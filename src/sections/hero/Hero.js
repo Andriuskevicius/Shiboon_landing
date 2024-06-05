@@ -19,7 +19,31 @@ const Hero = () => {
 
   return (
   <div className="heroSection">
-    <span className='overlayShiboon'>$HIBOON</span>
+      <div className="overlayShiboon">
+        <div className='textRowText'>
+          <span>$HIBOON</span>
+          <span>$HIBOON</span>
+          <span>$HIBOON</span>
+          <span>$HIBOON</span>
+          <span>$HIBOON</span>
+          <span>$HIBOON</span>
+          <span>$HIBOON</span>
+          <span>$HIBOON</span>
+          <span>$HIBOON</span>
+        </div>
+        <div className='textRowText'>
+          <span>$HIBOON</span>
+          <span>$HIBOON</span>
+          <span>$HIBOON</span>
+          <span>$HIBOON</span>
+          <span>$HIBOON</span>
+          <span>$HIBOON</span>
+          <span>$HIBOON</span>
+          <span>$HIBOON</span>
+          <span>$HIBOON</span>
+        </div>
+      </div>
+    {/* <span className='overlayShiboon'>$HIBOON</span> */}
     <div className="heroRow">
       <div>
         <span>$HI</span>

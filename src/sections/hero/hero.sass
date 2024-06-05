@@ -165,8 +165,24 @@
 
 .overlayShiboon
     position: absolute
-    font-size: 380px
     bottom: 195px
-    color: $black
+    width: 5000px
+    display: flex
+    flex-wrap: nowrap
+    gap: 50px
+    animation: move 60s infinite linear
     +t
         display: none
+
+@keyframes move
+  to
+    transform: translateX(-50%)
+
+.textRowText
+  display: flex
+  gap: 300px
+  color: $black
+  font-size: 380px
+  margin:0
+  padding-left:0px
+  width: 14000px
