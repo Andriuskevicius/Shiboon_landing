@@ -25,7 +25,7 @@ const Faq = () => {
             <AccordionItem>
                 <AccordionItemHeading>
                     <AccordionItemButton>
-                    {intl.formatMessage({ id: 'faq1' })}
+                    <p>{intl.formatMessage({ id: 'faq11' })}</p>
                     </AccordionItemButton>
                 </AccordionItemHeading>
                 <AccordionItemPanel>

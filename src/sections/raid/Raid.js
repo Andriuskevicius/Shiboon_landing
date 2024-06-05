@@ -4,7 +4,7 @@ import { StaticImage } from 'gatsby-plugin-image'
 
 const Tokenomics = () => {
   return (
-  <div className="tokeSection">
+  <div id="social-meme-raid" className="tokeSection">
     <div className="tokeRow">
       <div className="raidTextBlocksContainer">
         <h1>LEt’s Raid social Network</h1>

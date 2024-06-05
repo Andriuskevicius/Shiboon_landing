@@ -274,7 +274,7 @@ const Buy = () => {
             layout="fixed"
             alt="Shiboon"
           />
-          <h3>Buy ME ON ETHEREUM L2 CHAIN</h3>
+          <h3>Buy ME ON ETHEREUM</h3>
           <span className='comingSoon'>By choosing to buy on ETHEREUM L2 chain you will promote BOON side of The $HIBOON coin</span>
           <div className='buyInputsContainer'>
             <div>

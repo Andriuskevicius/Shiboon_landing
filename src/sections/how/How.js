@@ -55,7 +55,11 @@ const How = () => {
                 />
               </div>
               <span className="howTitle">{intl.formatMessage({ id: 'how-title1' })}</span>
-              <p>{intl.formatMessage({ id: 'how-to-buy1' })}</p>
+              <p>{intl.formatMessage({ id: 'how-to-buy11' })}</p>
+              <p>{intl.formatMessage({ id: 'how-to-buy12' })}</p>
+              <p>{intl.formatMessage({ id: 'how-to-buy13' })}</p>
+              <p>{intl.formatMessage({ id: 'how-to-buy14' })}</p>
+              <p>{intl.formatMessage({ id: 'how-to-buy15' })}</p>
             </div>
             <div>
             <div className='numberWrapper'>
@@ -70,7 +74,12 @@ const How = () => {
                 />
               </div>
               <span className="howTitle">{intl.formatMessage({ id: 'how-title2' })}</span>
-              <p>{intl.formatMessage({ id: 'how-to-buy2' })}</p>
+              <p>{intl.formatMessage({ id: 'how-to-buy21' })}</p>
+              <p>{intl.formatMessage({ id: 'how-to-buy22' })}</p>
+              <p>{intl.formatMessage({ id: 'how-to-buy23' })}</p>
+              <p>{intl.formatMessage({ id: 'how-to-buy24' })}</p>
+              <p>{intl.formatMessage({ id: 'how-to-buy25' })}</p>
+              <p>{intl.formatMessage({ id: 'how-to-buy26' })}</p>
             </div>
             <div>
             <div className='numberWrapper'>
@@ -85,7 +94,12 @@ const How = () => {
                 />
               </div>
               <span className="howTitle">{intl.formatMessage({ id: 'how-title3' })}</span>
-              <p>{intl.formatMessage({ id: 'how-to-buy3' })}</p>
+              <p>{intl.formatMessage({ id: 'how-to-buy31' })}</p>
+              <p>{intl.formatMessage({ id: 'how-to-buy32' })}</p>
+              <p>{intl.formatMessage({ id: 'how-to-buy33' })}</p>
+              <p>{intl.formatMessage({ id: 'how-to-buy34' })}</p>
+              <p>{intl.formatMessage({ id: 'how-to-buy35' })}</p>
+              <p>{intl.formatMessage({ id: 'how-to-buy36' })}</p>
             </div>
         </div>
       </div>

@@ -4,6 +4,7 @@
     position: relative
     padding: 0 10px
     background: $black
+    min-height: 900px
     +t
         padding: 0 10px
         height: unset
@@ -52,14 +53,20 @@
     position: absolute
     display: flex
     justify-content: space-between
-    align-items: center
+    align-items: start
     top: 80px
     width: 100%
+    gap: 20px
     +t
         flex-direction: column
         position: relative
         top: unset
         padding-left: 5px
+    ul li
+        color: $m-white
+        list-style: disc
+        margin-left: 20px
+
 
 .flowerWrapper1
     h4
@@ -112,8 +119,12 @@
 
 
 .flowerWrapper1, .flowerWrapper2, .flowerWrapper3, .flowerWrapper4, .flowerWrapper5
+    max-width: 20%
+    +t
+        max-width: 100%
     h4
         font-size: 30px
+        margin-bottom: 10px
         +t
             font-size: 38px
             font-weight: 700
@@ -129,7 +140,8 @@
             font-weight: 700
             padding-left: 15px
     svg
-        margin-left: -95px
+        +t
+            margin-left: -95px
     
 @-webkit-keyframes
   from

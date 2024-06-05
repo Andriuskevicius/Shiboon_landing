@@ -9,24 +9,24 @@ import LanguageMenu from './lang'
 import LogoIcon from '../../images/LogoIcon'
 
 const menu = [
-  {
-    title: 'Lightpapper',
-    link: '/'
-  },
+  // {
+  //   title: 'Lightpapper',
+  //   link: '/'
+  // },
   {
     title: 'Social Meme Raid',
-    link: '/'
+    link: '/#social-meme-raid'
   }
 ]
 
 const menu2 = [
-  {
-    title: 'Lightpaper',
-    link: '/'
-  },
+  // {
+  //   title: 'Lightpaper',
+  //   link: '/'
+  // },
   {
     title: 'Social Meme Raid',
-    link: '/'
+    link: '/#social-meme-raid'
   }
 ]
 
@@ -129,8 +129,8 @@ const Header = () => {
       <li className='mobileLanguage'> <LanguageMenu /></li>
         </ul>
         <ul className="mobileSocial">
-          <li className='headerRegular'><Link target='_blank' to="/">{xLogo}</Link></li>
-          <li className='headerRegular'><Link target='_blank' to="/">{tLogo}</Link></li>
+          <li className='headerRegular'><Link target='_blank' to="https://x.com/ShiboonCoin">{xLogo}</Link></li>
+          <li className='headerRegular'><Link target='_blank' to="https://t.me/ShiboonCoin">{tLogo}</Link></li>
           <li><Link target='_blank' to="/">{zLogo}</Link></li>
           <li><Link target='_blank' to="/">{iLogo}</Link></li>
       </ul>

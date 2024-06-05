@@ -65,13 +65,14 @@
     p
         font-size: 20px
         color: $mint
-        margin-top: 25px
-        margin-bottom: 45px
-        width: 80%
+        margin-top: 5px
+        margin-bottom: 5px
+        max-width: 75% !important
         +t
             word-wrap: break-word
-            font-size: 14px
+            font-size: 18px !important
             width: 100%
+            max-width: 100% !important
     a
         color: $pink
 
@@ -152,6 +153,8 @@
         text-align: left
         color: $m-white
         font-size: 14px
+        font-weight: 700
+        line-height: 18px
         max-width: 70%
         +t
             max-width: 100%
@@ -168,7 +171,15 @@
 .howTitle
     color: $green
     margin-top: 5px
+    margin-bottom: 15px
     line-height: 24px
+    max-width: 80%
+    font-weight: 800
+    font-size: 30px !important
+    +t
+        font-size: 40px !important
+        line-height: 36px
+        max-width: 100%
 
 .numberWrapper
     display: flex

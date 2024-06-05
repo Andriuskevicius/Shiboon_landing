@@ -1,9 +1,9 @@
 module.exports = {
   siteMetadata: {
     title: 'Shiboon | The first world’s dual meme coin',
-    description: '',
+    description: 'SHIBOON, the first dual meme coin: double the fun and earnings. Let the blockchain battle commence!',
     // eslint-disable-next-line n/no-path-concat
-    image: `${__dirname}/src/images/token-1.png`,
+    image: `${__dirname}/src/images/og-image.png`,
     author: '@CyberScalper',
     siteUrl: 'https://shiboon.com/'
   },
