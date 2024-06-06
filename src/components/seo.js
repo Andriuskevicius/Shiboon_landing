@@ -51,6 +51,16 @@ function Seo ({ description = '', title, children }) {
 
         gtag('config', 'G-S7NYP33JFG');
       `}</script>
+      <script type="text/javascript">{`
+        window.omnisend = window.omnisend || [];
+        omnisend.push(["accountID", "66565e362df1b42c69178f0f"]);
+        omnisend.push(["track", "$pageViewed"]);
+        !function(){var e=document.createElement("script");
+        e.type="text/javascript",e.async=!0,
+        e.src="https://omnisnippet1.com/inshop/launcher-v2.js";
+        var t=document.getElementsByTagName("script")[0];
+        t.parentNode.insertBefore(e,t)}(); `}
+      </script>
       <script>{`
           (function(h,o,t,j,a,r){
               h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};

@@ -17,7 +17,7 @@ const Featured = () => {
               height={37}
               className="featuredBoo"
               placeholder="memeraidsFish"
-              layout="fixed"
+              layout="constrained"
               alt="Shiboon"
             />
                   <StaticImage
@@ -25,7 +25,7 @@ const Featured = () => {
               height={32}
               className="featuredBoo"
               placeholder="memeraidsFish"
-              layout="fixed"
+              layout="constrained"
               alt="Shiboon"
             />
                   <StaticImage
@@ -33,7 +33,7 @@ const Featured = () => {
               height={33}
               className="featuredBoo"
               placeholder="memeraidsFish"
-              layout="fixed"
+              layout="constrained"
               alt="Shiboon"
             />
                   <StaticImage
@@ -41,7 +41,7 @@ const Featured = () => {
               height={45}
               className="featuredBoo"
               placeholder="memeraidsFish"
-              layout="fixed"
+              layout="constrained"
               alt="Shiboon"
             />
                   <StaticImage
@@ -49,7 +49,7 @@ const Featured = () => {
               height={34}
               className="featuredBoo"
               placeholder="memeraidsFish"
-              layout="fixed"
+              layout="constrained"
               alt="Shiboon"
             />
                   <StaticImage
@@ -57,7 +57,7 @@ const Featured = () => {
               height={50}
               className="featuredBoo"
               placeholder="memeraidsFish"
-              layout="fixed"
+              layout="constrained"
               alt="Shiboon"
             />
           </div>
