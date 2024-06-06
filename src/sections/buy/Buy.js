@@ -76,7 +76,8 @@ const Buy = () => {
   const [solanaPrice, setSolanaPrice] = useState(1)
   const wallet = useWallet()
   const receiverPublicKey = 'SHBNxvdFjPTXMg2KS2ZfzfejrexdCBcND1jrAjawBQQ'
-  const solRate = 1 / solanaPrice
+  const shiRate = 82500
+  const boonRate = 1875000
   const usdcRate = 1
   const side = useSelector((state) => state.chooseSide)
 
@@ -168,10 +169,10 @@ const Buy = () => {
     const replaceIfComma = e.target.value.replace(/,/g, '.')
     if (currency === 1) {
       setToken1(replaceIfComma)
-      setTokenRate1((replaceIfComma / solRate).toFixed(2))
+      setTokenRate1((replaceIfComma * shiRate).toFixed(2))
     } else {
       setToken2(replaceIfComma)
-      setTokenRate2((replaceIfComma / solRate).toFixed(2))
+      setTokenRate2((replaceIfComma * boonRate).toFixed(2))
     }
     console.log(e.target.value, solanaPrice, tokenRate1, tokenRate2)
   }
@@ -182,11 +183,11 @@ const Buy = () => {
     if (currency === 0) {
       const balance = await getSolBalance(senderPublicKeyInstance)
       setToken1(balance - 0.01)
-      setTokenRate1(((balance - 0.01) / solRate).toFixed(2))
+      setTokenRate1(((balance - 0.01) * shiRate).toFixed(2))
     } else {
       const balance = await getUsdcBalance(senderPublicKeyInstance)
       setToken2(balance - 0.1)
-      setTokenRate2(((balance - 0.1) / usdcRate).toFixed(2))
+      setTokenRate2(((balance - 0.1) * usdcRate).toFixed(2))
       // console.log('Got balance: ', balance)
     }
   }
