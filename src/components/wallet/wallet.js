@@ -17,7 +17,7 @@ const connectText = <span className="connectText">Connect</span>
 
 const Wallet = ({ closeModal }) => {
   const wallet = useWallet()
-  const [selected, setSelected] = useState('')
+  const [selected, setSelected] = useState('Phantom')
 
   const handleConnect = async (selectedWallet) => {
     try {
@@ -52,7 +52,7 @@ const Wallet = ({ closeModal }) => {
       : null}
     </ul>
     <p>if you're on mobile, please open this inside your wallet's built-in browser.</p>
-    <p>If you are unable to connect your wallet, you can send the SOL directly to VersgBc42RbaBKQddDmz3jJA6Ts8Jk7MhNe7TyAqdLp</p>
+    <p>If you are unable to connect your wallet, you can send the SOL directly to SHBNxvdFjPTXMg2KS2ZfzfejrexdCBcND1jrAjawBQQ</p>
     </div>
   )
 }

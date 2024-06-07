@@ -160,6 +160,8 @@
 
     .buyNow
         background: $pink
+        svg
+            fill: #000
 
     .buyNow
         &:hover
@@ -389,14 +391,19 @@
     justify-content: center
     align-items: center
     background: #FF0000
-    color: $m-white
-    font-size: 18px
+    color: rgb(251, 255, 223)
+    font-size: 30px
+    font-weight: 500
     width: 20px
     height: 20px
     position: absolute
-    right: 45px
-    top: 35px
+    right: 20px
+    top: 20px
     cursor: pointer
+    padding-bottom: 9px
+    +t
+        right: 40px
+        top: 35px
 
 .modalWrapper-content
     background: transparent !important
@@ -452,3 +459,10 @@
     text-align: center
     +t
         display: none
+
+.ethIcon
+    height: 36px
+    width: 36px
+    background: #000
+    border-radius: 50%
+    padding: 6px

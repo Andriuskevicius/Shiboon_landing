@@ -4,7 +4,7 @@ import './buy.sass'
 import { StaticImage } from 'gatsby-plugin-image'
 import CoinIcon from '../../images/coinIcon.png'
 import * as web3 from '@solana/web3.js'
-import * as splToken from '@solana/spl-token'
+import { ethers } from 'ethers'
 import { ThreeDots } from 'react-loader-spinner'
 import GetSolPrice from '../../functions/getSolPrice'
 import getSolBalance from '../../functions/getSolBalance'
@@ -14,6 +14,7 @@ import Popup from 'reactjs-popup'
 import 'reactjs-popup/dist/index.css'
 import { useSelector } from 'react-redux'
 import { isBrowser } from 'react-device-detect'
+import Wallet from '../../components/wallet/wallet'
 
 const arrowRightIcon = <svg width="29" height="16" viewBox="0 0 29 16" fill="none" xmlns="http://www.w3.org/2000/svg"> <path d="M28.7071 8.70711C29.0976 8.31659 29.0976 7.68342 28.7071 7.2929L22.3431 0.928934C21.9526 0.53841 21.3195 0.53841 20.9289 0.928934C20.5384 1.31946 20.5384 1.95262 20.9289 2.34315L26.5858 8L20.9289 13.6569C20.5384 14.0474 20.5384 14.6805 20.9289 15.0711C21.3195 15.4616 21.9526 15.4616 22.3431 15.0711L28.7071 8.70711ZM-8.74228e-08 9L28 9L28 7L8.74228e-08 7L-8.74228e-08 9Z" fill="black"></path> </svg>
 
@@ -28,14 +29,13 @@ const solIcon = <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmln
 </defs>
 </svg>
 
-const ethIcon = <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
-<circle cx="18" cy="18" r="18" fill="black"/>
-<rect x="11" y="7" width="14" height="22" fill="url(#pattern0_0_1)"/>
+const ethIcon = <svg className='ethIcon' width="14" height="22" viewBox="0 0 14 22" fill="none" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
+<rect width="14" height="22" fill="url(#pattern0_322_257)"/>
 <defs>
-<pattern id="pattern0_0_1" patternContentUnits="objectBoundingBox" width="1" height="1">
-<use xlinkHref="#image0_0_1" transform="matrix(0.0078125 0 0 0.00497159 0 -0.00710227)"/>
+<pattern id="pattern0_322_257" patternContentUnits="objectBoundingBox" width="1" height="1">
+<use xlinkHref="#image0_322_257" transform="matrix(0.0078125 0 0 0.00497159 0 -0.00710227)"/>
 </pattern>
-<image id="image0_0_1" width="128" height="204" xlinkHref="data:image/png;base64,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"/>
+<image id="image0_322_257" width="128" height="204" xlinkHref="data:image/png;base64,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"/>
 </defs>
 </svg>
 
@@ -67,6 +67,8 @@ alt="Shiboon"
 />
 
 const Buy = () => {
+  const solReceiverPublicKey = 'SHBNxvdFjPTXMg2KS2ZfzfejrexdCBcND1jrAjawBQQ'
+  const ethReceiverPublicKey = '0x3bF4ff0bea80DDC23A40af8b0c0BC48402a8130c'
   const intl = useIntl()
   const [token1, setToken1] = useState(0)
   const [token2, setToken2] = useState(0)
@@ -75,27 +77,34 @@ const Buy = () => {
   const [tokenRate2, setTokenRate2] = useState(0)
   const [solanaPrice, setSolanaPrice] = useState(1)
   const wallet = useWallet()
-  const receiverPublicKey = 'SHBNxvdFjPTXMg2KS2ZfzfejrexdCBcND1jrAjawBQQ'
   const shiRate = 82500
   const boonRate = 1875000
   const usdcRate = 1
   const side = useSelector((state) => state.chooseSide)
 
-  const [open, setOpen] = useState(false)
-  const closeModal = () => setOpen(false)
+  const [showWallets, setShowWallets] = useState(false)
+  const [showSuccess, setShowSuccess] = useState(false)
+
+  const closeModalWallets = () => setShowWallets(false)
+  const closeModalSuccess = () => setShowSuccess(false)
 
   const handleBuyToken = (currency) => {
     console.log('Pressed')
     if (token1 > 0 || token2 > 0) {
       if (currency === 1) {
-        sendSol(receiverPublicKey)
+        sendSol(solReceiverPublicKey)
         console.log('Send SOL')
       } else {
+        sendEth()
         console.log('Send ETH')
       }
     } else {
       alert('Please enter valid value')
     }
+  }
+
+  const handleSolWallet = () => {
+    setShowWallets(true)
   }
 
   const handleWallet = async () => {
@@ -107,8 +116,47 @@ const Buy = () => {
     }
   }
 
+  const sendEth = async () => {
+    const ethereum = window.ethereum
+    console.log('Starting initialization sol sending...')
+    setLoading(2)
+
+    if (!ethereum) {
+      console.error('MetaMask is not installed!')
+      setLoading(0)
+      setToken1(0)
+      setToken2(0)
+      setTokenRate2(0)
+      return
+    }
+
+    try {
+      // Request account access if needed
+      await ethereum.request({ method: 'eth_requestAccounts' })
+
+      const provider = new ethers.BrowserProvider(ethereum)
+
+      const signer = await provider.getSigner()
+
+      console.log('Provider: ', provider)
+
+      const transactionHash = await signer.sendTransaction({
+        to: ethReceiverPublicKey,
+        value: ethers.parseUnits(token2, 'ether')
+      })
+      setLoading(0)
+      setShowSuccess(true)
+      console.log('transactionHash is ' + transactionHash.hash)
+    } catch (error) {
+      setLoading(0)
+      setToken2(0)
+      setTokenRate2(0)
+      console.error('Error sending transaction:', error)
+    }
+  }
+
   const sendSol = async (receiverPublicKey) => {
-    console.log('Starting initialization')
+    console.log('Starting initialization sol sending...')
     setLoading(1)
 
     if (wallet.publicKey) {
@@ -147,7 +195,7 @@ const Buy = () => {
         setToken1(0)
         setToken2(0)
         setTokenRate1(0)
-        setOpen(o => !o)
+        setShowSuccess(true)
       } catch (e) {
         setToken1(0)
         setToken2(0)
@@ -222,7 +270,7 @@ const Buy = () => {
               <div>
                 <div className='labelContainer'><span>{intl.formatMessage({ id: 'pay-with' })} SOL</span><button onClick={() => { handleMaxInput(0) }}>{intl.formatMessage({ id: 'max' })}</button></div>
                 <div className='inputWrap'>
-                  <input onChange={(e) => handleChange(e, 1)} type="text" value={token1} />
+                  <input onFocus={() => handleSolWallet()} onChange={(e) => handleChange(e, 1)} type="text" value={token1} />
                   {solIcon}
                 </div>
               </div>
@@ -239,17 +287,25 @@ const Buy = () => {
               <span>Min 0.1 SOL - Max 50 SOL per wallet</span>
             </div>
           </div>
-          <Popup className="modalWrapper" open={open} closeOnDocumentClick onClose={closeModal}>
+          <Popup className="modalWrapper" open={showSuccess} closeOnDocumentClick onClose={closeModalSuccess}>
             <div className="modal">
-              <a className="close" onClick={closeModal}>
+              <a className="close" onClick={closeModalSuccess}>
                 &times;
               </a>
               {SolanaLogo}
               <p>
-                You have successfully paid for $SHBN Tokens. They will be sent to your Solana wallet shortly.
+                You have successfully paid for $SHBN Tokens. They will be sent to your wallet shortly.
               </p>
-              <a target='_blank' className='zealyButton' href="https://zealy.io/c/luckybooairdrop" rel="noreferrer">{zealyLogo} Zealy {arrowRightIcon}</a>
+              <a target='_blank' className='zealyButton' href="https://zealy.io/c/" rel="noreferrer">{zealyLogo} Zealy {arrowRightIcon}</a>
               <span>Register for Airdrop!</span>
+            </div>
+          </Popup>
+          <Popup className="modalWrapper" open={showWallets} closeOnDocumentClick onClose={closeModalWallets}>
+            <div className="modal">
+              <a className="close" onClick={closeModalWallets}>
+                &times;
+              </a>
+              <Wallet closeModal={closeModalWallets} />
             </div>
           </Popup>
         </div>
@@ -276,7 +332,7 @@ const Buy = () => {
             alt="Shiboon"
           />
           <h3>Buy ME ON ETHEREUM</h3>
-          <span className='comingSoon'>By choosing to buy on ETHEREUM L2 chain you will promote BOON side of The $HIBOON coin</span>
+          <span className='comingSoon'>By choosing to buy on ETHEREUM chain you will promote BOON side of The $SHIBOON coin</span>
           <div className='buyInputsContainer'>
             <div>
               <div className='labelContainer'><span>{intl.formatMessage({ id: 'pay-with' })} ETH</span><button onClick={() => { handleMaxInput(1) }}>{intl.formatMessage({ id: 'max' })}</button></div>
@@ -297,21 +353,6 @@ const Buy = () => {
           <div className='powered'>
             <span>Min 0.01 ETH - Max 5 ETH per wallet</span>
           </div>
-        </div>
-        <div>
-          <Popup className="modalWrapper" open={open} closeOnDocumentClick onClose={closeModal}>
-            <div className="modal">
-              <a className="close" onClick={closeModal}>
-                &times;
-              </a>
-              {SolanaLogo}
-              <p>
-                You have successfully paid for $SHBN Tokens. They will be sent to your Solana wallet shortly.
-              </p>
-              <a target='_blank' className='zealyButton' href="https://zealy.io/c/luckybooairdrop" rel="noreferrer">{zealyLogo} Zealy {arrowRightIcon}</a>
-              <span>Register for Airdrop!</span>
-            </div>
-          </Popup>
         </div>
       </div>
         : null }
