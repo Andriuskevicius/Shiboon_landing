@@ -296,8 +296,8 @@ const Buy = () => {
               layout="fixed"
               alt="Shiboon"
             />
-            <h3>Buy ME ON SOLANA CHAIN</h3>
-            <span className='comingSoon'>By choosing to buy on solana chain you will promote $HI side of The $HIBOON coin</span>
+            <h3>{intl.formatMessage({ id: 'buy-sol' })}</h3>
+            <span className='comingSoon'>{intl.formatMessage({ id: 'buy-sol-dec' })}</span>
             <div className='buyInputsContainer'>
               <div>
                 <div className='labelContainer'><span>{intl.formatMessage({ id: 'pay-with' })} SOL</span><button onClick={() => { handleMaxInput(0) }}>{intl.formatMessage({ id: 'max' })}</button></div>
@@ -316,7 +316,7 @@ const Buy = () => {
             </div>
             <button style={{ color: 'rgba(0, 0, 0, 1)' }} onClick={() => { handleBuyToken(1) }} className="buyNow">{intl.formatMessage({ id: 'buy-now1' })} {loading === 1 ? spinner : null}</button>
             <div className='powered'>
-              <span>Min 0.1 SOL - Max 50 SOL per wallet</span>
+              <span>{intl.formatMessage({ id: 'buy-min-sol' })}</span>
             </div>
           </div>
           <Popup className="modalWrapper" open={showSuccess} closeOnDocumentClick onClose={closeModalSuccess}>
@@ -326,10 +326,10 @@ const Buy = () => {
               </a>
               {SolanaLogo}
               <p>
-                You have successfully paid for $SHBN Tokens. They will be sent to your wallet shortly.
+                {intl.formatMessage({ id: 'buy-success' })}
               </p>
               <a target='_blank' className='zealyButton' href="https://zealy.io/c/" rel="noreferrer">{zealyLogo} Zealy {arrowRightIcon}</a>
-              <span>Register for Airdrop!</span>
+              <span>{intl.formatMessage({ id: 'buy-register' })}</span>
             </div>
           </Popup>
           <Popup className="modalWrapper" open={showWallets} closeOnDocumentClick onClose={closeModalWallets}>
@@ -363,8 +363,8 @@ const Buy = () => {
             layout="fixed"
             alt="Shiboon"
           />
-          <h3>Buy ME ON ETHEREUM</h3>
-          <span className='comingSoon'>By choosing to buy on ETHEREUM chain you will promote BOON side of The $SHIBOON coin</span>
+          <h3>{intl.formatMessage({ id: 'buy-eth' })}</h3>
+          <span className='comingSoon'>{intl.formatMessage({ id: 'buy-eth-dec' })}</span>
           <div className='buyInputsContainer'>
             <div>
               <div className='labelContainer'><span>{intl.formatMessage({ id: 'pay-with' })} ETH</span><button onClick={() => { handleMaxInput(1) }}>{intl.formatMessage({ id: 'max' })}</button></div>
@@ -383,7 +383,7 @@ const Buy = () => {
           </div>
           <button onClick={() => { handleBuyToken(2) }} className="buyNow">{intl.formatMessage({ id: 'buy-now2' })} {loading === 2 ? spinner : null}</button>
           <div className='powered'>
-            <span>Min 0.01 ETH - Max 5 ETH per wallet</span>
+            <span>{intl.formatMessage({ id: 'buy-min-eth' })}</span>
           </div>
         </div>
       </div>

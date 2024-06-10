@@ -1,5 +1,6 @@
 import React from 'react'
 import './tokenomics.sass'
+import { useIntl } from 'gatsby-plugin-intl'
 import { StaticImage } from 'gatsby-plugin-image'
 
 const flowerIcon = <svg className='spinningFlower22' width="150" height="150" viewBox="0 0 150 150" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -15,6 +16,7 @@ const flowerIcon = <svg className='spinningFlower22' width="150" height="150" vi
 </svg>
 
 const Tokenomics = () => {
+  const intl = useIntl()
   return (
     <div id="exchange" className="exchangeSection">
       <h1>Token-o-mics</h1>
@@ -30,12 +32,12 @@ const Tokenomics = () => {
             alt="Shiboon"
           />
         <div className="exchangeTextContainer">
-          <h2>Supply</h2>
+          <h2>{intl.formatMessage({ id: 'tokenomics1' })}</h2>
           <p className='violetText2'>1.000.000.000 $SHBN</p>
-          <h2>Pre-sale</h2>
-          <h2>No taxes</h2>
-          <h2>LP Tokens burn</h2>
-          <h2>Contract ownership renounced</h2>
+          <h2>{intl.formatMessage({ id: 'tokenomics2' })}</h2>
+          <h2>{intl.formatMessage({ id: 'tokenomics3' })}</h2>
+          <h2>{intl.formatMessage({ id: 'tokenomics4' })}</h2>
+          <h2>{intl.formatMessage({ id: 'tokenomics5' })}</h2>
         </div>
       </div>
     </div>

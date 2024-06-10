@@ -1,5 +1,6 @@
 import React from 'react'
 import { StaticImage } from 'gatsby-plugin-image'
+import { useIntl } from 'gatsby-plugin-intl'
 import './story.sass'
 
 const currIcon = <svg style={{ marginTop: 50 }} width="64" height="40" viewBox="0 0 64 40" fill="none" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
@@ -18,9 +19,10 @@ const currIcon = <svg style={{ marginTop: 50 }} width="64" height="40" viewBox="
 </svg>
 
 const Story = () => {
+  const intl = useIntl()
   return (
   <div className="storySection">
-    <h1>$HIBOON <br/>STORY</h1>
+    <h1>$HIBOON <br/>{intl.formatMessage({ id: 'story-title' })}</h1>
     <div className="storyColumn">
       <p></p>
       <StaticImage
@@ -53,11 +55,11 @@ const Story = () => {
             layout="fixed"
             alt="Shiboon"
         />
-      <p style={{ marginTop: 40 }}>In the vibrant world of decentralized finance, $HI, the adventurous Shiba Inu, and BOON, the wise baboon, met unexpectedly.</p>
+      <p style={{ marginTop: 40 }}>{intl.formatMessage({ id: 'story-text1' })}</p>
     </div>
     <div className="storyColumn third">
       {currIcon}
-      <p style={{ marginTop: 10 }}>$HI chased memes on Solana while BOON explored hidden gems & labyrinthine depths of Ethereum L2. Their encounter led to the discovery of $HIBOON, sparking a shared passion for crypto.</p>
+      <p style={{ marginTop: 10 }}>{intl.formatMessage({ id: 'story-text2' })}</p>
       <StaticImage
             src="../../images/story3.png"
             width={250}
@@ -89,7 +91,7 @@ const Story = () => {
           layout="fixed"
           alt="Shiboon"
         />
-      <p>Thus, a legend was born of two unlikely companions navigating the wilds of decentralized finance.</p>
+      <p>{intl.formatMessage({ id: 'story-text3' })}</p>
     </div>
   </div>
   )

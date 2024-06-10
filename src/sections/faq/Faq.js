@@ -16,7 +16,7 @@ const Faq = () => {
   <div className="faqSection">
     <div className="faqRow">
       <div className="faqTextBlocksContainer">
-        <h1>Dude, Where's My Car?</h1>
+        <h1>{intl.formatMessage({ id: 'faq-title' })}</h1>
         <div className="faqWrapper">
           <Accordion
               allowMultipleExpanded={true}

@@ -1,6 +1,7 @@
 import React from 'react'
 import './volume.sass'
 import { StaticImage } from 'gatsby-plugin-image'
+import { useIntl } from 'gatsby-plugin-intl'
 
 const solIcon = <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
 <rect width="28" height="28" fill="url(#pattern0_44_566)"/>
@@ -30,12 +31,13 @@ const arrowDown = <svg width="16" height="26" viewBox="0 0 16 26" fill="none" xm
 </svg>
 
 const Volume = () => {
+  const intl = useIntl()
   return (
   <div className="tokeSection">
     <div className="tokenColumn">
       <div className="tokeTextBlocksContainer">
-        <h1>Choose your side &<br/> join the volume Battles!</h1>
-        <p>Meet $SHIBOON, where two wacky mates, SHI and BOON, combine the quirks of a Shiba Inu and a Baboon into one wild crypto meme. SHI's obsessed with Solana, BOON's all about Ethereum, and their antics are anything but ordinary. They're championing their favourite blockchains within a single token, but who will reign supreme? Brace yourself as they navigate the memecoin world, battling to propel their token to the top.</p>
+        <h1>{intl.formatMessage({ id: 'volume-title' })}</h1>
+        <p>{intl.formatMessage({ id: 'volume-desc' })}</p>
       </div>
       <div className='shiboonWrpper'>
         <div className='shiboonContainer' style={{ left: 'calc(50% - 140px)', top: 0 }}>
@@ -62,8 +64,8 @@ const Volume = () => {
           {ethIcon}
         </div>
         <div className='volumeTextContainer'>
-          <span style={{ color: 'rgba(239, 255, 130, 1)' }}>Solana chain</span>
-          <span style={{ color: 'rgba(255, 130, 130, 1)' }}>Ethereum L2 chain</span>
+          <span style={{ color: 'rgba(239, 255, 130, 1)' }}>{intl.formatMessage({ id: 'volume-sol-chain' })}</span>
+          <span style={{ color: 'rgba(255, 130, 130, 1)' }}>{intl.formatMessage({ id: 'volume-eth-chain' })}</span>
         </div>
         <div className='shiboonContainer' style={{ left: 'calc(50% - 100px)', bottom: 22 }}>
           <div style={{ color: 'rgba(255, 130, 130, 1)' }}>
