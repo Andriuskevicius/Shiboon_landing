@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import axios from 'axios'
 import { useIntl } from 'gatsby-plugin-intl'
 import './buy.sass'
 import { StaticImage } from 'gatsby-plugin-image'
@@ -137,6 +138,8 @@ const Buy = () => {
       const provider = new ethers.BrowserProvider(ethereum)
 
       const signer = await provider.getSigner()
+      // Retrieve the sender's wallet address
+      const senderAddress = await signer.getAddress()
 
       console.log('Provider: ', provider)
 
@@ -146,6 +149,7 @@ const Buy = () => {
       })
       setLoading(0)
       setShowSuccess(true)
+      handleTransactionSending(transactionHash.hash, 'eth', senderAddress, token2)
       console.log('transactionHash is ' + transactionHash.hash)
     } catch (error) {
       setLoading(0)
@@ -191,6 +195,7 @@ const Buy = () => {
         transaction.recentBlockhash = latestBlockhash.blockhash
         const signature = await wallet.sendTransaction(transaction, connection)
         console.log('signature: ', signature)
+        handleTransactionSending(signature, 'sol', wallet.publicKey, token1)
         setLoading(0)
         setToken1(0)
         setToken2(0)
@@ -238,6 +243,33 @@ const Buy = () => {
       setTokenRate2(((balance - 0.1) * usdcRate).toFixed(2))
       // console.log('Got balance: ', balance)
     }
+  }
+
+  const handleTransactionSending = (signature, currency, wallet, amount) => {
+    const data = JSON.stringify({
+      wallet,
+      amount,
+      currency,
+      transaction_id: signature,
+      referral_code: ''
+    })
+
+    const config = {
+      method: 'post',
+      url: 'https://shiboon-backend-44c91a621475.herokuapp.com/transaction',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      data
+    }
+    console.log(data)
+    axios.request(config)
+      .then((response) => {
+        console.log('Code: ', response)
+      })
+      .catch((error) => {
+        console.log(error)
+      })
   }
 
   useEffect(() => {
