@@ -670,12 +670,24 @@ const LanguageMenu = () => {
   }
 
   useEffect(() => {
-    setSelectedLanguage(JSON.parse(localStorage.getItem('language')) ? JSON.parse(localStorage.getItem('language')) : 'en')
+    setSelectedLanguage(JSON.parse(localStorage.getItem('language')) ? JSON.parse(localStorage.getItem('language')) : 'English')
   }, [selectedLanguage])
+
+  console.log('Lang: ', selectedLanguage)
 
   return (
     <div className='languageContainer'>
-      {enIcon}
+      { selectedLanguage === 'English'
+        ? enIcon
+        : selectedLanguage === 'German'
+          ? deIcon
+          : selectedLanguage === 'Spanish'
+            ? esIcon
+            : selectedLanguage === 'Italian'
+              ? itIcon
+              : selectedLanguage === 'Japan'
+                ? jpIcon
+                : selectedLanguage === 'Polish' ? plIcon : null}
       <button onClick={() => SetOpen(prevOpen => !prevOpen)}>{selectedLanguage} {arrowDown}</button>
       <ul className='languageDropdown' style={{ display: open ? 'block' : 'none' }}>
         {/* <li><Link onClick={(e) => handleShowMenu(e)} to="/ar">AR</Link></li>

@@ -5,7 +5,7 @@
   "description2": "お守りを常に財布に入れておきましょう！",
   "herobutton": "私のShiboonを入手する",
   "buy-sol": "Solanaチェーンで購入",
-  "buy-sol-dec": "Solanaチェーンで購入することで、$HI側の$HIBOONコインをサポートします。",
+  "buy-sol-dec": "Solanaチェーンで購入することで、$HI側の$SHIBOONコインをサポートします。",
   "buy-eth": "Ethereumで購入",
   "buy-eth-dec": "Ethereumチェーンで購入することで、$SHIBOONコインのBOON側をサポートします。",
   "buy-title": "購入してステーク",
@@ -24,7 +24,7 @@
   "volume-sol-chain": "Solanaチェーン",
   "volume-eth-chain": "Ethereumチェーン",
   "story-text1": "分散型金融の活気ある世界で、冒険好きのShiba Inu、$HIと賢いバブーンのBOONが予期せず出会いました。",
-  "story-text2": "$HIはSolanaのミームを追いかけ、BOONはEthereum L2の隠れた宝石と複雑な深淵を探検していました。彼らの出会いは$HIBOONの発見につながり、暗号への共通の情熱を引き起こしました。",
+  "story-text2": "$HIはSolanaのミームを追いかけ、BOONはEthereum L2の隠れた宝石と複雑な深淵を探検していました。彼らの出会いは$SHIBOONの発見につながり、暗号への共通の情熱を引き起こしました。",
   "story-text3": "こうして、分散型金融の荒野をナビゲートする2人のありえない仲間の伝説が生まれました。",
   "story-title": "ストーリー",
   "days": "日",
@@ -115,7 +115,7 @@
   "roadmap-4-3": "新しい市場と地域をターゲットにする。",
   "roadmap-4-4": "Shiboon DeFiプラットフォーム",
   "raid-title": "ソーシャルネットワークを襲撃しよう",
-  "raid-desc": "$HIとBOONが先導する暴動的な襲撃で、笑い声を響かせましょう。RAID SOCIALボタンを押して、襲撃軍に参加しよう。$HIBOONミームの狂乱をソーシャルネットワークに解き放とう！",
+  "raid-desc": "$HIとBOONが先導する暴動的な襲撃で、笑い声を響かせましょう。RAID SOCIALボタンを押して、襲撃軍に参加しよう。$SHIBOONミームの狂乱をソーシャルネットワークに解き放とう！",
   "raid-shuffle": "シャッフル",
   "raid-share": "ソーシャルを襲撃"
 }

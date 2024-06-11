@@ -43,7 +43,7 @@ const Hero = () => {
           <span>$HIBOON</span>
         </div>
       </div>
-    {/* <span className='overlayShiboon'>$HIBOON</span> */}
+    {/* <span className='overlayShiboon'>$SHIBOON</span> */}
     <div className="heroRow">
       <div>
         <span>$HI</span>

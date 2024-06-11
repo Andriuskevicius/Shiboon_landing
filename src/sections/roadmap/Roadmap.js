@@ -28,7 +28,7 @@ const Roadmap = () => {
   return (
     <div className="roadmapSection">
       <div className="roadmapRow">
-        <h2>$HIBOON<br/>{intl.formatMessage({ id: 'roadmap-title' })}</h2>
+        <h2>$SHIBOON<br/>{intl.formatMessage({ id: 'roadmap-title' })}</h2>
         <div className='roadmapFlowersWrap'>
           {isBrowser ? fullArrow : verticalArrow}
           <div className="roadmapFlowersInner">

@@ -40,6 +40,21 @@ const ethIcon = <svg className='ethIcon' width="14" height="22" viewBox="0 0 14 
 </defs>
 </svg>
 
+const closeIcon = <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g clipPath="url(#clip0_547_618)">
+<path fillRule="evenodd" clipRule="evenodd" d="M17.169 14.9999L30 27.2199L27.8295 29.2857L15 17.0657L2.16902 29.2857L0 27.2199L12.8295 14.9999L0 2.77995L2.16902 0.714233L15 12.9342L27.8295 0.714233L30 2.77995L17.169 14.9999Z" fill="black"/>
+</g>
+<defs>
+<clipPath id="clip0_547_618">
+<rect width="30" height="30" fill="white"/>
+</clipPath>
+</defs>
+</svg>
+
+const zealy = <svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M0 18.2786V12.4889C0.771213 11.9886 1.54755 11.4852 2.41842 10.9201C1.7618 10.3579 1.16472 9.84662 0.682867 9.43417V2.14549C6.96738 2.44502 13.1665 2.01024 19.0923 0C20.7999 1.69619 22.4616 3.34687 24.1377 5.01163V10.9338C23.7296 11.263 23.2303 11.6661 22.6475 12.1365C23.388 12.781 23.9996 13.3133 24.5102 13.7577V20.977C21.4156 22.7276 11.1965 23.9387 5.17955 23.3294C3.35373 21.5489 1.66043 19.8978 0 18.2786ZM13.3885 18.3323C13.3635 18.2532 13.3385 18.1739 13.3134 18.0948C16.4396 15.694 19.4263 13.1298 22.1968 10.3991V7.54768C17.3506 8.92808 12.4636 9.31864 7.52285 9.23108V12.3079C10.3079 12.4644 13.0436 12.2455 15.9415 11.9752C12.9448 14.4573 9.91801 16.6065 6.84084 18.6431V21.4854C12.2188 21.7033 17.481 21.2811 22.61 19.7344V16.6997C21.0423 17.0408 19.5481 17.4147 18.0358 17.6815C16.4959 17.9533 14.9381 18.1195 13.3883 18.3321L13.3885 18.3323Z" fill="#FBFFDF"/>
+</svg>
+
 const spinner = <ThreeDots
 visible={true}
 height="16"
@@ -77,14 +92,14 @@ const Buy = () => {
   const [tokenRate1, setTokenRate1] = useState(0)
   const [tokenRate2, setTokenRate2] = useState(0)
   const [solanaPrice, setSolanaPrice] = useState(1)
-  const wallet = useWallet()
+  const { wallet, connected, publicKey } = useWallet()
   const shiRate = 82500
   const boonRate = 1875000
   const usdcRate = 1
   const side = useSelector((state) => state.chooseSide)
 
   const [showWallets, setShowWallets] = useState(false)
-  const [showSuccess, setShowSuccess] = useState(false)
+  const [showSuccess, setShowSuccess] = useState(true)
 
   const closeModalWallets = () => setShowWallets(false)
   const closeModalSuccess = () => setShowSuccess(false)
@@ -105,7 +120,9 @@ const Buy = () => {
   }
 
   const handleSolWallet = () => {
-    setShowWallets(true)
+    if (!connected) {
+      setShowWallets(true)
+    }
   }
 
   const handleWallet = async () => {
@@ -322,20 +339,20 @@ const Buy = () => {
           <Popup className="modalWrapper" open={showSuccess} closeOnDocumentClick onClose={closeModalSuccess}>
             <div className="modal">
               <a className="close" onClick={closeModalSuccess}>
-                &times;
+                {closeIcon}
               </a>
               {SolanaLogo}
               <p>
                 {intl.formatMessage({ id: 'buy-success' })}
               </p>
-              <a target='_blank' className='zealyButton' href="https://zealy.io/c/" rel="noreferrer">{zealyLogo} Zealy {arrowRightIcon}</a>
+              <a target='_blank' className='zealyButton' href="https://zealy.io/c/" rel="noreferrer">{zealy} <span>Zealy</span></a>
               <span>{intl.formatMessage({ id: 'buy-register' })}</span>
             </div>
           </Popup>
           <Popup className="modalWrapper" open={showWallets} closeOnDocumentClick onClose={closeModalWallets}>
             <div className="modal">
               <a className="close" onClick={closeModalWallets}>
-                &times;
+                {closeIcon}
               </a>
               <Wallet closeModal={closeModalWallets} />
             </div>

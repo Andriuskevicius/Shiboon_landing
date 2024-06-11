@@ -31,7 +31,7 @@ module.exports = {
         // eslint-disable-next-line n/no-path-concat
         path: `${__dirname}/src/intl`,
         // Supported languages
-        languages: ['en', 'de'],
+        languages: ['en', 'de', 'it', 'jp', 'es'],
         // Default site language
         defaultLanguage: 'en',
         // Redirects to `/pt` in the route `/`

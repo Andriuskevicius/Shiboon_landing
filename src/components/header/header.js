@@ -77,7 +77,7 @@ const Header = () => {
         <li className='headerRegular'><Link target='_blank' to="https://t.me/@ShiboonNews">{tLogo}</Link></li>
         <li className='headerRegular'><Link target='_blank' to="https://www.tiktok.com/@shibooncoin">{tikLogo}</Link></li>
         <li><Link target='_blank' to="/">{zLogo}</Link></li>
-        <li><Link target='_blank' to="/">{iLogo}</Link></li>
+        <li><Link target='_blank' to="https://instagram.com/shiboon_crypto">{iLogo}</Link></li>
     </ul>
     <ul className='menuInner'>
       {menu2.map((x, index) => (
@@ -101,9 +101,9 @@ const Header = () => {
   </div>
   <div className='menu second'>
     <LanguageMenu />
-    {/* <div className='walletConnectButton'>
+    <div className='walletConnectButton'>
       <WalletMultiButton />
-    </div> */}
+    </div>
   </div>
   { menuBurger
     ? <div className="mobile-menu">

@@ -1,36 +1,27 @@
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap');
 
 .wallet-adapter-button {
-    background-color: rgba(33, 33, 33, 1);
     border: none;
-    color: rgba(239, 255, 130, 1);
+    color: #000;
     cursor: pointer;
     display: flex;
     align-items: center;
     text-decoration: underline;
     font-size: 16px;
-    font-weight: 600;
-    height: 38px;
+    font-weight: 800;
+    height: 58px;
     line-height: 48px;
-    padding: 0 35px;
-    padding-bottom: 5px;
+    padding: 0 30px;
     border-radius: 30px;
+    border: solid 1px #000
 }
 
 .wallet-adapter-button-trigger {
-    background-color: rgba(33, 33, 33, 1);
-    font-weight: 900;
     transition: .3s;
 }
 
 .wallet-adapter-button:not([disabled]):focus-visible {
     outline-color: white;
-}
-
-.wallet-adapter-button:not([disabled]):hover {
-    background-color: rgba(255, 130, 130, 1);
-    color: rgba(0, 0, 0, 1);
-    font-weight: 900;
 }
 
 .wallet-adapter-button[disabled] {
@@ -157,17 +148,9 @@
     border-radius: 50%;
 }
 
-.wallet-adapter-modal-button-close:focus-visible {
-    outline-color: white;
-}
-
 .wallet-adapter-modal-button-close svg {
     fill: #777;
     transition: fill 200ms ease 0s;
-}
-
-.wallet-adapter-modal-button-close:hover svg {
-    fill: #fff;
 }
 
 .wallet-adapter-modal-overlay {
@@ -202,9 +185,11 @@
     flex-direction: column;
     z-index: 1050;
     max-width: 400px;
-    border-radius: 10px;
-    background: rgba(33, 33, 33, 1);
+    padding: 25px;
+    border-radius: 35px;
+    background: rgba(251, 255, 223, 1);
     font-family: "Darker Grotesque", sans-serif;
+    font-size: 18px;
     flex: 1;
 }
 
@@ -216,10 +201,12 @@
     font-weight: 900;
     font-size: 34px;
     line-height: 36px;
+    padding: 20px 0;
+    padding-top: 40px;
     margin: 0;
-    padding: 64px 48px 48px 48px;
     text-align: center;
-    color: rgba(251, 255, 223, 1)
+    text-transform: uppercase;
+    color: #000
 }
 
 @media (max-width: 374px) {
@@ -229,6 +216,9 @@
 }
 
 .wallet-adapter-modal-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
     margin: 0 0 12px 0;
     padding: 0;
     width: 100%;
@@ -236,8 +226,6 @@
 }
 
 .wallet-adapter-modal-list .wallet-adapter-button {
-    font-weight: 900;
-    border-radius: 0;
     font-size: 18px;
 }
 
@@ -251,7 +239,8 @@
 
 .wallet-adapter-modal-list .wallet-adapter-button span {
     margin-left: auto;
-    font-size: 14px;
+    font-size: 16px;
+    font-weight: 700;
     opacity: .6;
 }
 
