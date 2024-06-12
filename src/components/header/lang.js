@@ -677,6 +677,7 @@ const LanguageMenu = () => {
 
   return (
     <div className='languageContainer'>
+      <div className='langIconWrap'>
       { selectedLanguage === 'English'
         ? enIcon
         : selectedLanguage === 'German'
@@ -688,30 +689,33 @@ const LanguageMenu = () => {
               : selectedLanguage === 'Japan'
                 ? jpIcon
                 : selectedLanguage === 'Polish' ? plIcon : null}
+      </div>
+      <div className='languagesWrapper'>
       <button onClick={() => SetOpen(prevOpen => !prevOpen)}>{selectedLanguage} {arrowDown}</button>
-      <ul className='languageDropdown' style={{ display: open ? 'block' : 'none' }}>
-        {/* <li><Link onClick={(e) => handleShowMenu(e)} to="/ar">AR</Link></li>
-        <li><Link onClick={(e) => handleShowMenu(e)} to="/bg">BG</Link></li>
-        <li><Link onClick={(e) => handleShowMenu(e)} to="/cz">CZ</Link></li> */}
-        <li><Link onClick={(e) => handleShowMenu(e)} to="/de">{deIcon}<span>German</span></Link></li>
-        {/* <li><Link onClick={(e) => handleShowMenu(e)} to="/el">EL</Link></li> */}
-        <li><Link onClick={(e) => handleShowMenu(e)} to="/">{enIcon}<span>English</span></Link></li>
-        <li><Link onClick={(e) => handleShowMenu(e)} to="/es">{esIcon}<span>Spanish</span></Link></li>
-        {/* <li><Link onClick={(e) => handleShowMenu(e)} to="/fr">FR</Link></li>
-        <li><Link onClick={(e) => handleShowMenu(e)} to="/hu">HU</Link></li>
-        <li><Link onClick={(e) => handleShowMenu(e)} to="/id">ID</Link></li> */}
-        <li><Link onClick={(e) => handleShowMenu(e)} to="/it">{itIcon}<span>Italian</span></Link></li>
-        <li><Link onClick={(e) => handleShowMenu(e)} to="/jp">{jpIcon}<span>Japan</span></Link></li>
-        {/* <li><Link onClick={(e) => handleShowMenu(e)} to="/kr">KR</Link></li>
-        <li><Link onClick={(e) => handleShowMenu(e)} to="/nl">NL</Link></li> */}
-        <li><Link onClick={(e) => handleShowMenu(e)} to="/pl">{plIcon}<span>Polish</span></Link></li>
-        {/* <li><Link onClick={(e) => handleShowMenu(e)} to="/pt">PT</Link></li>
-        <li><Link onClick={(e) => handleShowMenu(e)} to="/ro">RO</Link></li>
-        <li><Link onClick={(e) => handleShowMenu(e)} to="/ru">RU</Link></li>
-        <li><Link onClick={(e) => handleShowMenu(e)} to="/sk">SK</Link></li>
-        <li><Link onClick={(e) => handleShowMenu(e)} to="/tr">TR</Link></li>
-        <li><Link onClick={(e) => handleShowMenu(e)} to="/vn">VN</Link></li> */}
-      </ul>
+        <ul className='languageDropdown' style={{ display: open ? 'block' : 'none' }}>
+          {/* <li><Link onClick={(e) => handleShowMenu(e)} to="/ar">AR</Link></li>
+          <li><Link onClick={(e) => handleShowMenu(e)} to="/bg">BG</Link></li>
+          <li><Link onClick={(e) => handleShowMenu(e)} to="/cz">CZ</Link></li> */}
+          <li><Link onClick={(e) => handleShowMenu(e)} to="/de">{deIcon}<span>German</span></Link></li>
+          {/* <li><Link onClick={(e) => handleShowMenu(e)} to="/el">EL</Link></li> */}
+          <li><Link onClick={(e) => handleShowMenu(e)} to="/">{enIcon}<span>English</span></Link></li>
+          <li><Link onClick={(e) => handleShowMenu(e)} to="/es">{esIcon}<span>Spanish</span></Link></li>
+          {/* <li><Link onClick={(e) => handleShowMenu(e)} to="/fr">FR</Link></li>
+          <li><Link onClick={(e) => handleShowMenu(e)} to="/hu">HU</Link></li>
+          <li><Link onClick={(e) => handleShowMenu(e)} to="/id">ID</Link></li> */}
+          <li><Link onClick={(e) => handleShowMenu(e)} to="/it">{itIcon}<span>Italian</span></Link></li>
+          <li><Link onClick={(e) => handleShowMenu(e)} to="/jp">{jpIcon}<span>Japan</span></Link></li>
+          {/* <li><Link onClick={(e) => handleShowMenu(e)} to="/kr">KR</Link></li>
+          <li><Link onClick={(e) => handleShowMenu(e)} to="/nl">NL</Link></li> */}
+          <li><Link onClick={(e) => handleShowMenu(e)} to="/pl">{plIcon}<span>Polish</span></Link></li>
+          {/* <li><Link onClick={(e) => handleShowMenu(e)} to="/pt">PT</Link></li>
+          <li><Link onClick={(e) => handleShowMenu(e)} to="/ro">RO</Link></li>
+          <li><Link onClick={(e) => handleShowMenu(e)} to="/ru">RU</Link></li>
+          <li><Link onClick={(e) => handleShowMenu(e)} to="/sk">SK</Link></li>
+          <li><Link onClick={(e) => handleShowMenu(e)} to="/tr">TR</Link></li>
+          <li><Link onClick={(e) => handleShowMenu(e)} to="/vn">VN</Link></li> */}
+        </ul>
+      </div>
     </div>
   )
 }

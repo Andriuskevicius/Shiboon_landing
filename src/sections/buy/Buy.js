@@ -17,8 +17,6 @@ import { useSelector } from 'react-redux'
 import { isBrowser } from 'react-device-detect'
 import Wallet from '../../components/wallet/wallet'
 
-const arrowRightIcon = <svg width="29" height="16" viewBox="0 0 29 16" fill="none" xmlns="http://www.w3.org/2000/svg"> <path d="M28.7071 8.70711C29.0976 8.31659 29.0976 7.68342 28.7071 7.2929L22.3431 0.928934C21.9526 0.53841 21.3195 0.53841 20.9289 0.928934C20.5384 1.31946 20.5384 1.95262 20.9289 2.34315L26.5858 8L20.9289 13.6569C20.5384 14.0474 20.5384 14.6805 20.9289 15.0711C21.3195 15.4616 21.9526 15.4616 22.3431 15.0711L28.7071 8.70711ZM-8.74228e-08 9L28 9L28 7L8.74228e-08 7L-8.74228e-08 9Z" fill="black"></path> </svg>
-
 const solIcon = <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
 <circle cx="18" cy="18" r="18" fill="black"/>
 <rect x="7" y="7" width="22" height="22" fill="url(#pattern0_0_1)"/>
@@ -74,14 +72,6 @@ layout="constrained"
 alt="Shiboon"
 />
 
-const zealyLogo = <StaticImage
-src="../../images/zealy.png"
-height={30}
-className="iconImage"
-layout="fixed"
-alt="Shiboon"
-/>
-
 const Buy = () => {
   const solReceiverPublicKey = 'SHBNxvdFjPTXMg2KS2ZfzfejrexdCBcND1jrAjawBQQ'
   const ethReceiverPublicKey = '0x3bF4ff0bea80DDC23A40af8b0c0BC48402a8130c'
@@ -92,14 +82,14 @@ const Buy = () => {
   const [tokenRate1, setTokenRate1] = useState(0)
   const [tokenRate2, setTokenRate2] = useState(0)
   const [solanaPrice, setSolanaPrice] = useState(1)
-  const { wallet, connected, publicKey } = useWallet()
+  const { wallet, connected, publicKey, sendTransaction } = useWallet()
   const shiRate = 82500
   const boonRate = 1875000
   const usdcRate = 1
   const side = useSelector((state) => state.chooseSide)
 
   const [showWallets, setShowWallets] = useState(false)
-  const [showSuccess, setShowSuccess] = useState(true)
+  const [showSuccess, setShowSuccess] = useState(false)
 
   const closeModalWallets = () => setShowWallets(false)
   const closeModalSuccess = () => setShowSuccess(false)
@@ -119,9 +109,43 @@ const Buy = () => {
     }
   }
 
+  const connectToMetaMask = async () => {
+    if (typeof window.ethereum !== 'undefined') {
+      try {
+        // Request account access if needed
+        await window.ethereum.request({ method: 'eth_requestAccounts' })
+
+        // Create a new provider and signer
+        const provider = new ethers.BrowserProvider(window.ethereum)
+        const signer = await provider.getSigner()
+
+        // Retrieve the user's Ethereum address
+        const address = await signer.getAddress()
+        console.log('Connected address:', address)
+
+        return address
+      } catch (error) {
+        console.error('Error connecting to MetaMask:', error.message)
+        return null
+      }
+    } else {
+      console.error('MetaMask is not installed!')
+      return null
+    }
+  }
+
   const handleSolWallet = () => {
     if (!connected) {
       setShowWallets(true)
+    }
+  }
+
+  const handleEthWallet = () => {
+    const ethereum = window.ethereum
+    if (!ethereum) {
+      alert('MetaMask is not installed!')
+    } else {
+      connectToMetaMask()
     }
   }
 
@@ -158,8 +182,6 @@ const Buy = () => {
       // Retrieve the sender's wallet address
       const senderAddress = await signer.getAddress()
 
-      console.log('Provider: ', provider)
-
       const transactionHash = await signer.sendTransaction({
         to: ethReceiverPublicKey,
         value: ethers.parseUnits(token2, 'ether')
@@ -172,15 +194,20 @@ const Buy = () => {
       setLoading(0)
       setToken2(0)
       setTokenRate2(0)
-      console.error('Error sending transaction:', error)
+      // Extract the error message
+      let errorMessage = 'An unknown error occurred'
+      if (error?.message) {
+        errorMessage = error.message
+      }
+      alert('Error sending transaction: ' + errorMessage)
     }
   }
 
   const sendSol = async (receiverPublicKey) => {
-    console.log('Starting initialization sol sending...')
+    console.log('Starting initialization sol sending from wallet: ', wallet)
     setLoading(1)
 
-    if (wallet.publicKey) {
+    if (publicKey) {
       if (token1 < 0.000001) {
         setLoading(0)
         setToken1(0)
@@ -192,15 +219,16 @@ const Buy = () => {
       const clusterApiUrl = 'https://solana-mainnet.core.chainstack.com/2cb4b6f620d5bd6151f5950fc2ff4f8e' // Mainet cluster URL
 
       const connection = new web3.Connection(clusterApiUrl)
-      console.log(connection)
-      const walletAccountInfo = await connection.getAccountInfo(wallet.publicKey)
+      console.log('Logging connection: ', connection)
+      const walletAccountInfo = await connection.getAccountInfo(publicKey)
+      console.log('Logging connection: ', walletAccountInfo)
       if (!walletAccountInfo) {
         handleWallet()
       }
       const receiverPublicKeyInstance = new web3.PublicKey(receiverPublicKey)
       const transaction = new web3.Transaction().add(
         web3.SystemProgram.transfer({
-          fromPubkey: wallet.publicKey,
+          fromPubkey: publicKey,
           toPubkey: receiverPublicKeyInstance,
           lamports: web3.LAMPORTS_PER_SOL * token1
         })
@@ -208,11 +236,11 @@ const Buy = () => {
       try {
         // const signature = await window.solana.signAndSendTransaction(transaction)
         const latestBlockhash = await connection.getLatestBlockhash()
-        transaction.feePayer = wallet.publicKey
+        transaction.feePayer = publicKey
         transaction.recentBlockhash = latestBlockhash.blockhash
-        const signature = await wallet.sendTransaction(transaction, connection)
+        const signature = await sendTransaction(transaction, connection)
         console.log('signature: ', signature)
-        handleTransactionSending(signature, 'sol', wallet.publicKey, token1)
+        handleTransactionSending(signature, 'sol', publicKey, token1)
         setLoading(0)
         setToken1(0)
         setToken2(0)
@@ -296,6 +324,8 @@ const Buy = () => {
     }
     fetchData()
   }, [])
+
+  console.log('Wallet', publicKey)
 
   return (
 
@@ -386,7 +416,7 @@ const Buy = () => {
             <div>
               <div className='labelContainer'><span>{intl.formatMessage({ id: 'pay-with' })} ETH</span><button onClick={() => { handleMaxInput(1) }}>{intl.formatMessage({ id: 'max' })}</button></div>
               <div className='inputWrap'>
-                <input onChange={(e) => handleChange(e, 2)} type="text" value={token2} />
+                <input onFocus={() => handleEthWallet()} onChange={(e) => handleChange(e, 2)} type="text" value={token2} />
                 {ethIcon}
               </div>
             </div>

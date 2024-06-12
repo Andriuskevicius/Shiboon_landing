@@ -71,6 +71,7 @@ header
         position: absolute
         right: 15px
         top: 10px
+        color: rgba(33, 33, 33, 1)
         cursor: pointer
         z-index: 6
         font-size: 30px
@@ -107,7 +108,7 @@ header
 .mobile-menu-social-wrapper
     justify-self: flex-end
     margin-top: auto
-    padding-bottom: 50px
+    padding-bottom: 25px
 
 .mobile-menu .specialFont
     font-family: "Darker Grotesque", sans-serif
@@ -243,6 +244,8 @@ header
         fill: $pink
     svg
         width: 24px
+        +t
+            width: 34px
 
 .languageDropdown
     flex-direction: column !important
@@ -269,8 +272,13 @@ header
     flex-direction: row
     justify-content: space-between
     align-items: center
+    +t
+        align-items: flex-start
     svg
         margin-top: 2px
+        +t
+            height: 30px
+            width: 40px
     button
         font-size: 18px
         padding: 0 10px
@@ -282,6 +290,12 @@ header
         justify-content: center
         gap: 5px
 
+.langIconWrap
+    margin-top: 4px
+    +t
+        overflow: hidden
+        border-radius: 20px
+        margin-top: 20px
 
 .mobileLanguage
     padding: 15px 0
@@ -289,6 +303,8 @@ header
         justify-content: start
         gap: 10px
         align-items: center
+        +t
+            align-items: flex-start
         button
             color: #000
             font-size: 50px

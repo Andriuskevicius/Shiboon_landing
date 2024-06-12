@@ -160,9 +160,9 @@ const Header = () => {
         </li>
         ))} */}
         <li>
-        {/* <div className='walletConnectButton'>
+        <div className='walletConnectButton'>
           <WalletMultiButton />
-        </div> */}
+        </div>
         </li>
       </ul>
     </div>
