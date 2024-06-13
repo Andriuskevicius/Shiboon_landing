@@ -74,7 +74,7 @@ alt="Shiboon"
 
 const Buy = () => {
   const solReceiverPublicKey = 'SHBNxvdFjPTXMg2KS2ZfzfejrexdCBcND1jrAjawBQQ'
-  const ethReceiverPublicKey = '0x3bF4ff0bea80DDC23A40af8b0c0BC48402a8130c'
+  const ethReceiverPublicKey = '0xcf4b718edb4adf12d89a83BBe4671Be3AB5e1EAe'
   const intl = useIntl()
   const [token1, setToken1] = useState(0)
   const [token2, setToken2] = useState(0)
@@ -366,6 +366,10 @@ const Buy = () => {
               <span>{intl.formatMessage({ id: 'buy-min-sol' })}</span>
             </div>
           </div>
+          <div className='buyNotice'>
+            <div className='buyNoticeWalletWrapper'>{solIcon}<span className='buyNoticeWallet'>SHBNxvdFjPTXMg2KS2ZfzfejrexdCBcND1jrAjawBQQ</span></div>
+            <span className='buyNoticeExplanation'>*Alternatively, you can send it directly to the SOL wallet above.</span>
+          </div>
           <Popup className="modalWrapper" open={showSuccess} closeOnDocumentClick onClose={closeModalSuccess}>
             <div className="modal">
               <a className="close" onClick={closeModalSuccess}>
@@ -416,7 +420,7 @@ const Buy = () => {
             <div>
               <div className='labelContainer'><span>{intl.formatMessage({ id: 'pay-with' })} ETH</span><button onClick={() => { handleMaxInput(1) }}>{intl.formatMessage({ id: 'max' })}</button></div>
               <div className='inputWrap'>
-                <input onFocus={() => handleEthWallet()} onChange={(e) => handleChange(e, 2)} type="text" value={token2} />
+                <input onChange={(e) => handleChange(e, 2)} type="text" value={token2} />
                 {ethIcon}
               </div>
             </div>
@@ -433,6 +437,10 @@ const Buy = () => {
             <span>{intl.formatMessage({ id: 'buy-min-eth' })}</span>
           </div>
         </div>
+        <div className='buyNotice'>
+            <div className='buyNoticeWalletWrapper'>{ethIcon}<span className='buyNoticeWallet'>0xcf4b718edb4adf12d89a83BBe4671Be3AB5e1EAe</span></div>
+            <span className='buyNoticeExplanation'>*Alternatively, you can send it directly to the ETH wallet above.</span>
+          </div>
       </div>
         : null }
     </div>
