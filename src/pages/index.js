@@ -19,7 +19,7 @@ import Roadmap from '../sections/roadmap/Roadmap'
 const IndexPage = () => {
   const intl = useIntl()
   return (
-    <Layout>
+    <Layout page="main">
       <Seo title={intl.formatMessage({ id: 'title' })} />
       <div className="section">
         <Hero />

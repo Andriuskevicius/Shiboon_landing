@@ -25,7 +25,7 @@ import '../styles/wallet.css'
 import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
 
-const Layout = ({ children }) => {
+const Layout = ({ page, children }) => {
   const data = useStaticQuery(graphql`
     query SiteTitleQuery {
       site {
@@ -42,7 +42,7 @@ const Layout = ({ children }) => {
     <ConnectionProvider endpoint={endpoint}>
       <WalletProvider wallets={wallets}>
       <WalletModalProvider>
-        <Header siteTitle={data.site.siteMetadata?.title || 'Title'} />
+        <Header page={page} siteTitle={data.site.siteMetadata?.title || 'Title'} />
         <div>
           <main>{children}</main>
           <Footer />

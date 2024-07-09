@@ -16,6 +16,10 @@ const menu = [
   {
     title: 'Social Meme Raid',
     link: '/#social-meme-raid'
+  },
+  {
+    title: 'Referrals',
+    link: '/referrals'
   }
 ]
 
@@ -27,6 +31,10 @@ const menu2 = [
   {
     title: 'Social Meme Raid',
     link: '/#social-meme-raid'
+  },
+  {
+    title: 'Referrals',
+    link: '/referrals'
   }
 ]
 
@@ -54,13 +62,13 @@ const tikLogo = <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmln
 <path d="M11.451 0.707434C12.5764 0.690247 13.6936 0.699184 14.8101 0.690247C14.8472 2.08656 15.4137 3.34331 16.315 4.27418L16.3137 4.27281C17.2837 5.14662 18.546 5.71312 19.9375 5.80937L19.9567 5.81075V9.273C18.6422 9.24 17.4061 8.93681 16.2917 8.41568L16.348 8.43906C15.809 8.17987 15.3532 7.91381 14.9201 7.61681L14.9558 7.64018C14.9476 10.1489 14.9641 12.6576 14.9387 15.1573C14.8678 16.4312 14.4443 17.5931 13.7651 18.5632L13.7788 18.5419C12.6431 20.1685 10.8033 21.2362 8.71129 21.2994H8.70166C8.6171 21.3036 8.51741 21.3056 8.41704 21.3056C7.22766 21.3056 6.11597 20.9742 5.1686 20.3988L5.1961 20.4146C3.47185 19.3772 2.28247 17.6021 2.06247 15.5375L2.05972 15.5093C2.04254 15.0796 2.03429 14.6499 2.05147 14.2292C2.38835 10.9436 5.1411 8.40193 8.48716 8.40193C8.86322 8.40193 9.23172 8.43425 9.58991 8.49543L9.55141 8.48993C9.5686 9.76112 9.51704 11.033 9.51704 12.3042C9.22622 12.199 8.89072 12.1378 8.54079 12.1378C7.25654 12.1378 6.1641 12.9587 5.75985 14.1047L5.75366 14.1254C5.66222 14.4189 5.60929 14.7565 5.60929 15.1057C5.60929 15.2474 5.61822 15.3876 5.63472 15.5251L5.63335 15.5086C5.8616 16.9152 7.06747 17.9767 8.52154 17.9767C8.56347 17.9767 8.60472 17.9761 8.64597 17.974H8.63979C9.6456 17.9437 10.5187 17.4027 11.0123 16.6031L11.0192 16.5907C11.2028 16.335 11.3286 16.0256 11.3705 15.6894L11.3712 15.6798C11.4572 14.1419 11.4228 12.6129 11.431 11.0749C11.4393 7.61268 11.4228 4.15868 11.4482 0.705372L11.451 0.707434Z" fill="rgb(239, 255, 130)"/>
 </svg>
 
-const Header = () => {
+const Header = ({ page }) => {
   const [menuBurger, setMenuBurger] = useState(false)
 
   const burgerHandler = () => {
     setMenuBurger(menuBurger => !menuBurger)
   }
-
+  console.log('Got it: ', page)
   return (
   <header
     style={{
@@ -70,6 +78,7 @@ const Header = () => {
       alignItems: 'flex-start',
       justifyContent: 'space-between'
     }}
+    className={`${page === 'main' ? 'main' : 'referrals'}`}
   >
   <div className='menu first'>
     <ul className='menuInner'>
@@ -93,7 +102,7 @@ const Header = () => {
   </div>
   <div className='menu'>
     <Link
-      className="headerLogo"
+      className={`headerLogo ${page === 'main' ? 'main' : 'referrals'}`}
       to="/"
     >
       <LogoIcon />
@@ -108,7 +117,7 @@ const Header = () => {
   { menuBurger
     ? <div className="mobile-menu">
       <Link
-        className="headerLogo"
+        className={`headerLogo ${page === 'main' ? 'main' : 'referrals'}`}
         to="/"
       >
        <LogoIcon />
