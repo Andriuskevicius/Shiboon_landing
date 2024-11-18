@@ -216,7 +216,7 @@ const Buy = () => {
         return alert('Minimum allowed transaction 0.1 SOL')
       }
 
-      const clusterApiUrl = 'https://solana-mainnet.core.chainstack.com/2cb4b6f620d5bd6151f5950fc2ff4f8e' // Mainet cluster URL
+      const clusterApiUrl = 'https://solana-mainnet.core.chainstack.com/ea66dcd7b0ed427499ab46decb7540f6' // Mainet cluster URL
 
       const connection = new web3.Connection(clusterApiUrl)
       console.log('Logging connection: ', connection)
