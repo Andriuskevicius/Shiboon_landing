@@ -14,16 +14,13 @@ import {
   WalletProvider
 } from '@solana/wallet-adapter-react'
 import {
-  WalletModalProvider,
-  WalletMultiButton
+  WalletModalProvider
 } from '@solana/wallet-adapter-react-ui'
 import * as web3 from '@solana/web3.js'
 import Header from './header/header'
 import Footer from './footer/Footer'
 import '../styles/app.sass'
 import '../styles/wallet.css'
-import 'slick-carousel/slick/slick.css'
-import 'slick-carousel/slick/slick-theme.css'
 
 const Layout = ({ page, children }) => {
   const data = useStaticQuery(graphql`

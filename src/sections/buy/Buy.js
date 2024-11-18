@@ -8,8 +8,8 @@ import * as web3 from '@solana/web3.js'
 import { ethers } from 'ethers'
 import { ThreeDots } from 'react-loader-spinner'
 import GetSolPrice from '../../functions/getSolPrice'
-import getSolBalance from '../../functions/getSolBalance'
-import getUsdcBalance from '../../functions/getUsdcBalance'
+// import getSolBalance from '../../functions/getSolBalance'
+// import getUsdcBalance from '../../functions/getUsdcBalance'
 import { useWallet } from '@solana/wallet-adapter-react'
 import Popup from 'reactjs-popup'
 import 'reactjs-popup/dist/index.css'
@@ -275,20 +275,20 @@ const Buy = () => {
     console.log(e.target.value, solanaPrice, tokenRate1, tokenRate2)
   }
 
-  const handleMaxInput = async (currency) => {
-    const provider = window.solana
-    const senderPublicKeyInstance = provider.publicKey
-    if (currency === 0) {
-      const balance = await getSolBalance(senderPublicKeyInstance)
-      setToken1(balance - 0.01)
-      setTokenRate1(((balance - 0.01) * shiRate).toFixed(2))
-    } else {
-      const balance = await getUsdcBalance(senderPublicKeyInstance)
-      setToken2(balance - 0.1)
-      setTokenRate2(((balance - 0.1) * usdcRate).toFixed(2))
-      // console.log('Got balance: ', balance)
-    }
-  }
+  // const handleMaxInput = async (currency) => {
+  //   const provider = window.solana
+  //   const senderPublicKeyInstance = provider.publicKey
+  //   if (currency === 0) {
+  //     const balance = await getSolBalance(senderPublicKeyInstance)
+  //     setToken1(balance - 0.01)
+  //     setTokenRate1(((balance - 0.01) * shiRate).toFixed(2))
+  //   } else {
+  //     const balance = await getUsdcBalance(senderPublicKeyInstance)
+  //     setToken2(balance - 0.1)
+  //     setTokenRate2(((balance - 0.1) * usdcRate).toFixed(2))
+  //     // console.log('Got balance: ', balance)
+  //   }
+  // }
 
   const handleTransactionSending = (signature, currency, wallet, amount) => {
     const data = JSON.stringify({
@@ -347,7 +347,10 @@ const Buy = () => {
             <span className='comingSoon'>{intl.formatMessage({ id: 'buy-sol-dec' })}</span>
             <div className='buyInputsContainer'>
               <div>
-                <div className='labelContainer'><span>{intl.formatMessage({ id: 'pay-with' })} SOL</span><button onClick={() => { handleMaxInput(0) }}>{intl.formatMessage({ id: 'max' })}</button></div>
+                <div className='labelContainer'>
+                  <span>{intl.formatMessage({ id: 'pay-with' })} SOL</span>
+                  {/* <button onClick={() => { handleMaxInput(0) }}>{intl.formatMessage({ id: 'max' })}</button> */}
+                </div>
                 <div className='inputWrap'>
                   <input onFocus={() => handleSolWallet()} onChange={(e) => handleChange(e, 1)} type="text" value={token1} />
                   {solIcon}
@@ -418,7 +421,10 @@ const Buy = () => {
           <span className='comingSoon'>{intl.formatMessage({ id: 'buy-eth-dec' })}</span>
           <div className='buyInputsContainer'>
             <div>
-              <div className='labelContainer'><span>{intl.formatMessage({ id: 'pay-with' })} ETH</span><button onClick={() => { handleMaxInput(1) }}>{intl.formatMessage({ id: 'max' })}</button></div>
+              <div className='labelContainer'>
+                <span>{intl.formatMessage({ id: 'pay-with' })} ETH</span>
+                {/* <button onClick={() => { handleMaxInput(1) }}>{intl.formatMessage({ id: 'max' })}</button> */}
+              </div>
               <div className='inputWrap'>
                 <input onChange={(e) => handleChange(e, 2)} type="text" value={token2} />
                 {ethIcon}
