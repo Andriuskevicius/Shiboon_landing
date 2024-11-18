@@ -84,7 +84,7 @@ const Story = () => {
     </div>
     <div className="storyColumn fourth">
     <StaticImage
-          src="../../images/story4.png"
+          src="../../images/story4.jpg"
           width={250}
           className="storyShiboon"
           placeholder="blurred"
