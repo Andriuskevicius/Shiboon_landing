@@ -4,11 +4,6 @@
         "memory": 128,
         "maxDuration": 10
       }
-    },
-    "build": {
-      "ignore": [
-        "node_modules/unused-dependency"
-      ]
     }
   }
   
