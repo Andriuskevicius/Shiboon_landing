@@ -1,3 +1,3 @@
 Just a simple static landing page for another crypto project SHIBOON.COM
 
-To verfy blowfish 1328
+To verfy blowfish again 2024.11.28
